@@ -1,12 +1,6 @@
-# Ionic Starter App
-# angular.module is a global place for creating, registering and retrieving Angular modules
-# 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-# the 2nd parameter is an array of 'requires'
-# 'starter.controllers' is found in controllers.js
-
-angular.module('starter', [
+angular.module('pounce', [
   'ionic'
-  'starter.controllers'
+  'pounce.controllers'
 ])
 
 .run(($ionicPlatform) ->
@@ -28,6 +22,28 @@ angular.module('starter', [
       abstract: true
       templateUrl: 'templates/menu.html'
       controller: 'AppCtrl'
+    )
+
+    .state('app.relationships',
+      url: '/relationships',
+      views:
+        menuContent:
+          templateUrl: 'templates/relationships.html'
+          controller: 'RelationshipsCtrl'
+    )
+    .state('app.relationship-messages',
+      url: '/relationships/:relationshipId/messages',
+      views:
+        menuContent:
+          templateUrl: 'templates/relationship-messages.html'
+          controller: 'RelationshipMessagesCtrl'
+    )
+    .state('app.relationship-showings',
+      url: '/relationships/:relationshipId/showings',
+      views:
+        menuContent:
+          templateUrl: 'templates/relationship-showings.html'
+          controller: 'RelationshipShowingsCtrl'
     )
 
     .state('app.search',
@@ -61,4 +77,4 @@ angular.module('starter', [
     )
 
   # if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise '/app/playlists'
+  $urlRouterProvider.otherwise '/app/relationships'

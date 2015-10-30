@@ -1,4 +1,66 @@
-angular.module('starter.controllers', [])
+angular.module('pounce.controllers', [])
+
+.controller('RelationshipsCtrl', ($scope) ->
+  $scope.relationships = [
+    {
+      id: 1
+      clients: [
+        {
+          id: 1
+          first_name: "Stephanie"
+          last_name: "Folsom"
+        }
+        {
+          id: 2
+          first_name: "Steven"
+          last_name: "Folsom"
+        }
+      ]
+      last_message_time: "2015-10-25T22:34:51+00:00"
+      next_showing_time: "2015-10-25T22:34:51+00:00"
+    },
+    {
+      id: 2
+      clients: [
+        {
+          id: 3
+          first_name: "Erik"
+          last_name: "Polk"
+        }
+        {
+          id: 4
+          first_name: "Beth"
+          last_name: "Polk"
+        }
+      ]
+      last_message_time: "2015-10-25T22:34:51+00:00"
+      next_showing_time: "2015-10-25T22:34:51+00:00"
+    },
+    {
+      id: 3
+      clients: [
+        {
+          id: 5
+          first_name: "Carrie"
+          last_name: "Stevenson"
+        }
+        {
+          id: 6
+          first_name: "Andy"
+          last_name: "Stevenson"
+        }
+      ]
+      last_message_time: "2015-10-25T22:34:51+00:00"
+      next_showing_time: "2015-10-25T22:34:51+00:00"
+    }
+  ]
+)
+
+.controller 'RelationshipMessagesCtrl', ($scope, $stateParams) ->
+  console.log "RelationshipMessagesCtrl"
+
+.controller 'RelationshipShowingsCtrl', ($scope, $stateParams) ->
+  console.log "RelationshipShowingsCtrl"
 
 .controller('AppCtrl', ($scope, $ionicModal, $timeout) ->
   # Form data for the login modal
@@ -54,3 +116,6 @@ angular.module('starter.controllers', [])
 )
 
 .controller 'PlaylistCtrl', ($scope, $stateParams) ->
+
+
+
