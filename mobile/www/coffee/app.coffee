@@ -31,19 +31,12 @@ angular.module('pounce', [
           templateUrl: 'templates/relationships.html'
           controller: 'RelationshipsCtrl'
     )
-    .state('app.relationship-messages',
-      url: '/relationships/:relationshipId/messages',
+    .state('app.relationship',
+      url: '/relationships/:relationshipId',
       views:
         menuContent:
-          templateUrl: 'templates/relationship-messages.html'
-          controller: 'RelationshipMessagesCtrl'
-    )
-    .state('app.relationship-showings',
-      url: '/relationships/:relationshipId/showings',
-      views:
-        menuContent:
-          templateUrl: 'templates/relationship-showings.html'
-          controller: 'RelationshipShowingsCtrl'
+          templateUrl: '/templates/relationship.html'
+          controller: 'RelationshipCtrl'
     )
 
     .state('app.search',

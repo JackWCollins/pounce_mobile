@@ -21,20 +21,12 @@ angular.module('pounce', ['ionic', 'pounce.controllers']).run(function($ionicPla
         controller: 'RelationshipsCtrl'
       }
     }
-  }).state('app.relationship-messages', {
-    url: '/relationships/:relationshipId/messages',
+  }).state('app.relationship', {
+    url: '/relationships/:relationshipId',
     views: {
       menuContent: {
-        templateUrl: 'templates/relationship-messages.html',
-        controller: 'RelationshipMessagesCtrl'
-      }
-    }
-  }).state('app.relationship-showings', {
-    url: '/relationships/:relationshipId/showings',
-    views: {
-      menuContent: {
-        templateUrl: 'templates/relationship-showings.html',
-        controller: 'RelationshipShowingsCtrl'
+        templateUrl: '/templates/relationship.html',
+        controller: 'RelationshipCtrl'
       }
     }
   }).state('app.search', {
@@ -124,6 +116,22 @@ angular.module('pounce.controllers', []).controller('RelationshipsCtrl', functio
   return console.log("RelationshipMessagesCtrl");
 }).controller('RelationshipShowingsCtrl', function($scope, $stateParams) {
   return console.log("RelationshipShowingsCtrl");
+}).controller('RelationshipCtrl', function($scope, $stateParams) {
+  console.log("Single Relationship Ctrl");
+  $scope.messages = [
+    {
+      id: 1,
+      author: 'Adam Agent',
+      sent_at: '3 min ago',
+      body: 'Hey @Ben, I just scheduled some showings for us this Saturday. I think we will have some great places to look at! See you at 1 PM on Saturday.'
+    }, {
+      id: 1,
+      author: 'Ben Howard',
+      sent_at: '1 hour ago',
+      body: '@Adam, can we see some more places this Saturday? I was really a fan of the brick house we saw last weekend.'
+    }
+  ];
+  return console.log("Messages: ", $scope.messages);
 }).controller('AppCtrl', function($scope, $ionicModal, $timeout) {
   $scope.loginData = {};
   $ionicModal.fromTemplateUrl('templates/login.html', {

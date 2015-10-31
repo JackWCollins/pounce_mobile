@@ -1,9 +1,0 @@
-<ion-view view-title="Messages">
-  <ion-content>
-    <ion-list>
-      <ion-item ng-repeat="relationship in relationships" href="#/app/relationships/{{relationship.id}}/messages">
-        {{relationship.clients[0].first_name}} and {{relationship.clients[1].first_name}}
-      </ion-item>
-    </ion-list>
-  </ion-content>
-</ion-view>

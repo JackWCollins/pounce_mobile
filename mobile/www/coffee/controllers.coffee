@@ -62,6 +62,24 @@ angular.module('pounce.controllers', [])
 .controller 'RelationshipShowingsCtrl', ($scope, $stateParams) ->
   console.log "RelationshipShowingsCtrl"
 
+.controller 'RelationshipCtrl', ($scope, $stateParams) ->
+  console.log "Single Relationship Ctrl"
+  $scope.messages = [
+    {
+      id: 1
+      author: 'Adam Agent'
+      sent_at: '3 min ago'
+      body: 'Hey @Ben, I just scheduled some showings for us this Saturday. I think we will have some great places to look at! See you at 1 PM on Saturday.'
+    }
+    {
+      id: 1
+      author: 'Ben Howard'
+      sent_at: '1 hour ago'
+      body: '@Adam, can we see some more places this Saturday? I was really a fan of the brick house we saw last weekend.'
+    }
+  ]
+  console.log "Messages: ", $scope.messages
+
 .controller('AppCtrl', ($scope, $ionicModal, $timeout) ->
   # Form data for the login modal
   $scope.loginData = {}
