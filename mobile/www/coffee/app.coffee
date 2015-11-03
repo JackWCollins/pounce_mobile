@@ -1,6 +1,7 @@
 angular.module('pounce', [
   'ionic'
   'pounce.controllers'
+  'pounce.services'
 ])
 
 .run(($ionicPlatform) ->
@@ -17,57 +18,83 @@ angular.module('pounce', [
 
 .config ($stateProvider, $urlRouterProvider) ->
   $stateProvider
-    .state('app',
-      url: '/app'
+    .state('login', 
+      url: '/login' 
+      templateUrl: 'templates/login.html'
+      controller: 'LoginCtrl'
+    )
+    .state('relationship',
+      url: '/relationships/:relationshipId'
       abstract: true
-      templateUrl: 'templates/menu.html'
-      controller: 'AppCtrl'
+      templateUrl: 'templates/relationship.html'
+    )
+    .state('relationship.messages',
+      url: '/messages'
+      views: 
+        'relationship-messages':
+          templateUrl: 'templates/relationship_messages.html'
+          controller: 'RelationshipMessagesCtrl'
+    )
+    .state('relationship.showings',
+      url: '/showings'
+      views:
+        'relationship-showings':
+          templateUrl: 'templates/relationship_showings.html'
+          controller: 'RelationshipShowingsCtrl'
     )
 
-    .state('app.relationships',
-      url: '/relationships',
-      views:
-        menuContent:
-          templateUrl: 'templates/relationships.html'
-          controller: 'RelationshipsCtrl'
-    )
-    .state('app.relationship',
-      url: '/relationships/:relationshipId',
-      views:
-        menuContent:
-          templateUrl: '/templates/relationship.html'
-          controller: 'RelationshipCtrl'
-    )
+    # Each tab has its own nav history stack
+    # .state('app',
+    #   url: '/app'
+    #   abstract: true
+    #   templateUrl: 'templates/menu.html'
+    #   controller: 'AppCtrl'
+    # )
 
-    .state('app.search',
-      url: '/search',
-      views:
-        menuContent:
-          templateUrl: 'templates/search.html'
-    )
+    # .state('app.relationships',
+    #   url: '/relationships',
+    #   views:
+    #     menuContent:
+    #       templateUrl: 'templates/relationships.html'
+    #       controller: 'RelationshipsCtrl'
+    # )
+    # .state('app.relationship',
+    #   url: '/relationships/:relationshipId',
+    #   views:
+    #     menuContent:
+    #       templateUrl: '/templates/relationship.html'
+    #       controller: 'RelationshipCtrl'
+    # )
 
-    .state('app.browse',
-      url: '/browse',
-      views:
-        menuContent:
-          templateUrl: 'templates/browse.html'
-    )
+    # .state('app.search',
+    #   url: '/search',
+    #   views:
+    #     menuContent:
+    #       templateUrl: 'templates/search.html'
+    # )
 
-    .state('app.playlists',
-      url: '/playlists',
-      views:
-        menuContent:
-          templateUrl: 'templates/playlists.html'
-          controller: 'PlaylistsCtrl'
-    )
+    # .state('app.browse',
+    #   url: '/browse',
+    #   views:
+    #     menuContent:
+    #       templateUrl: 'templates/browse.html'
+    # )
 
-    .state('app.single',
-      url: '/playlists/:playlistId'
-      views:
-        menuContent:
-          templateUrl: 'templates/playlist.html'
-          controller: 'PlaylistCtrl'
-    )
+    # .state('app.playlists',
+    #   url: '/playlists',
+    #   views:
+    #     menuContent:
+    #       templateUrl: 'templates/playlists.html'
+    #       controller: 'PlaylistsCtrl'
+    # )
+
+    # .state('app.single',
+    #   url: '/playlists/:playlistId'
+    #   views:
+    #     menuContent:
+    #       templateUrl: 'templates/playlist.html'
+    #       controller: 'PlaylistCtrl'
+    # )
 
   # if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise '/app/relationships'
+  $urlRouterProvider.otherwise '/login'

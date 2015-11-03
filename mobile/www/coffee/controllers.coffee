@@ -7,13 +7,13 @@ angular.module('pounce.controllers', [])
       clients: [
         {
           id: 1
-          first_name: "Stephanie"
-          last_name: "Folsom"
+          firstName: "Stephanie"
+          lastName: "Folsom"
         }
         {
           id: 2
-          first_name: "Steven"
-          last_name: "Folsom"
+          firstName: "Steven"
+          lastName: "Folsom"
         }
       ]
       last_message_time: "2015-10-25T22:34:51+00:00"
@@ -24,13 +24,13 @@ angular.module('pounce.controllers', [])
       clients: [
         {
           id: 3
-          first_name: "Erik"
-          last_name: "Polk"
+          firstName: "Erik"
+          lastName: "Polk"
         }
         {
           id: 4
-          first_name: "Beth"
-          last_name: "Polk"
+          firstName: "Beth"
+          lastName: "Polk"
         }
       ]
       last_message_time: "2015-10-25T22:34:51+00:00"
@@ -41,13 +41,13 @@ angular.module('pounce.controllers', [])
       clients: [
         {
           id: 5
-          first_name: "Carrie"
-          last_name: "Stevenson"
+          firstName: "Carrie"
+          lastName: "Stevenson"
         }
         {
           id: 6
-          first_name: "Andy"
-          last_name: "Stevenson"
+          firstName: "Andy"
+          lastName: "Stevenson"
         }
       ]
       last_message_time: "2015-10-25T22:34:51+00:00"
@@ -56,29 +56,40 @@ angular.module('pounce.controllers', [])
   ]
 )
 
-.controller 'RelationshipMessagesCtrl', ($scope, $stateParams) ->
+.controller 'RelationshipMessagesCtrl', ($scope, $stateParams, MessagesService) ->
   console.log "RelationshipMessagesCtrl"
+
+  getRecentMessages = () ->
+    $scope.messages = MessagesService.all(id: $stateParams.relationshipId)
+    console.log "Messages: ", $scope.messages
+
+  getRecentMessages()
 
 .controller 'RelationshipShowingsCtrl', ($scope, $stateParams) ->
   console.log "RelationshipShowingsCtrl"
 
 .controller 'RelationshipCtrl', ($scope, $stateParams) ->
   console.log "Single Relationship Ctrl"
-  $scope.messages = [
-    {
-      id: 1
-      author: 'Adam Agent'
-      sent_at: '3 min ago'
-      body: 'Hey @Ben, I just scheduled some showings for us this Saturday. I think we will have some great places to look at! See you at 1 PM on Saturday.'
-    }
-    {
-      id: 1
-      author: 'Ben Howard'
-      sent_at: '1 hour ago'
-      body: '@Adam, can we see some more places this Saturday? I was really a fan of the brick house we saw last weekend.'
-    }
-  ]
-  console.log "Messages: ", $scope.messages
+  $scope.relationship = {
+    id: 1
+    clients: [
+      {
+        id: 1
+        first_name: "Stephanie"
+        last_name: "Folsom"
+      }
+      {
+        id: 2
+        first_name: "Steven"
+        last_name: "Folsom"
+      }
+    ]
+    last_message_time: "2015-10-25T22:34:51+00:00"
+    next_showing_time: "2015-10-25T22:34:51+00:00"
+  }
+
+.controller 'LoginCtrl', ($scope) ->
+  console.log "In the Login Ctrl"
 
 .controller('AppCtrl', ($scope, $ionicModal, $timeout) ->
   # Form data for the login modal
