@@ -1,8 +1,22 @@
 <ion-view view-title="Messages">
   <ion-content>
-    <ion-list>
+    <ion-list class="messages">
       <ion-item ng-repeat="message in messages">
-        {{message.body}}
+        <div class="header row">
+        	<div class="title col">
+        		{{message.author}}
+        	</div>
+        	<div class="timestamp col">
+        		{{message.sent_at}}
+        	</div>
+        </div>
+        <div class="body row">
+        	<div class="icon ion-ios-chatbubble-outline col-20">
+        	</div>
+        	<div class="content col-80">
+        		{{message.body}}
+        	</div>
+        </div>
       </ion-item>
     </ion-list>
   </ion-content>

@@ -1,4 +1,12 @@
 {
   "name": "Pounce",
-  "app_id": "42349884"
+  "app_id": "42349884",
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*"
+  ]
 }
