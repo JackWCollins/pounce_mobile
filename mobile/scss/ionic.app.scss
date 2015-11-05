@@ -18,7 +18,12 @@ $dark:                            #444 !default;
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
+$black-90: rgba(black, .9);
+$black-70: rgba(black, .7);
+$black-50: rgba(black, .5);
+
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 @import "messages";
+@import "showings";
 

@@ -9099,3 +9099,15 @@ a.button {
       margin: auto; }
     .messages .list .item .body .content {
       white-space: normal; }
+
+.showing-actions {
+  margin: 10px; }
+  .showing-actions .add-showing {
+    margin-bottom: 150px; }
+    .showing-actions .add-showing .help-text {
+      font-style: italic;
+      color: rgba(0, 0, 0, 0.7);
+      line-height: 25px; }
+      .showing-actions .add-showing .help-text ul {
+        list-style-type: circle;
+        margin-left: 30px; }

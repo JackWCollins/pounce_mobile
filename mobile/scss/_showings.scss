@@ -1,0 +1,21 @@
+.showing-actions {
+	margin: 10px;
+
+	.add-showing {
+		margin-bottom: 150px;
+		.help-text {
+			font-style: italic;
+			color: $black-70;
+			line-height: 25px;
+			ul {
+				list-style-type: circle;
+				margin-left: 30px;
+			}
+		}
+
+	}
+
+	.view-showings {
+
+	}
+}
