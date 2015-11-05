@@ -1,4 +1,4 @@
-angular.module('pounce', ['ionic', 'pounce.controllers', 'pounce.services']).run(function($ionicPlatform) {
+angular.module('pounce', ['ionic', 'pounce.controllers', 'pounce.services', 'pounce.filters']).run(function($ionicPlatform) {
   return $ionicPlatform.ready(function() {
     if (window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -88,13 +88,24 @@ angular.module('pounce.controllers', []).controller('RelationshipsCtrl', functio
 }).controller('RelationshipMessagesCtrl', function($scope, $stateParams, MessagesService) {
   var getRecentMessages;
   console.log("RelationshipMessagesCtrl");
+  $scope.newMessage = '';
   getRecentMessages = function() {
     $scope.messages = MessagesService.all({
       id: $stateParams.relationshipId
     });
     return console.log("Messages: ", $scope.messages);
   };
-  return getRecentMessages();
+  getRecentMessages();
+  return $scope.addMessage = function() {
+    var newMessage;
+    newMessage = {};
+    newMessage.body = $scope.newMessage;
+    newMessage.id = 12;
+    newMessage.sentAt = moment().toISOString();
+    newMessage.author = 'Adam Agent';
+    $scope.messages.push(newMessage);
+    return $scope.newMessage = '';
+  };
 }).controller('RelationshipShowingsCtrl', function($scope, $stateParams) {
   return console.log("RelationshipShowingsCtrl");
 }).controller('RelationshipCtrl', function($scope, $stateParams) {
@@ -160,6 +171,18 @@ angular.module('pounce.controllers', []).controller('RelationshipsCtrl', functio
   ];
 }).controller('PlaylistCtrl', function($scope, $stateParams) {});
 
+angular.module('pounce.filters', []).filter('relativeTime', function() {
+  return function(time) {
+    var m;
+    m = moment(time);
+    if (m.isValid()) {
+      return m.fromNow();
+    } else {
+      return time;
+    }
+  };
+});
+
 angular.module('pounce.services', []).service('MessagesService', function() {
   return {
     all: function(params) {
@@ -169,12 +192,12 @@ angular.module('pounce.services', []).service('MessagesService', function() {
           {
             id: 1,
             author: 'Adam Agent',
-            sent_at: '3 min ago',
+            sentAt: moment().subtract(5, 'minutes').toISOString(),
             body: 'Hey @Stephanie, I just scheduled some showings for us this Saturday. I think we will have some great places to look at! See you at 1 PM on Saturday.'
           }, {
             id: 2,
             author: 'Stephanie Folsom',
-            sent_at: '1 hour ago',
+            sentAt: moment().subtract(1, 'hours').toISOString(),
             body: '@Adam, can we see some more places this Saturday? I was really a fan of the brick house we saw last weekend.'
           }
         ];
@@ -183,12 +206,12 @@ angular.module('pounce.services', []).service('MessagesService', function() {
           {
             id: 3,
             author: 'Adam Agent',
-            sent_at: '20 min ago',
+            sentAt: moment().subtract(20, 'minutes').toISOString(),
             body: '@Erik, I had a great conversation with your lender today.'
           }, {
             id: 4,
             author: 'Erik Polk',
-            sent_at: '3 hours ago',
+            sentAt: moment().subtract(3, 'hours').toISOString(),
             body: '@Adam, can we see some more places this Saturday? I was really a fan of the brick house we saw last weekend.'
           }
         ];
@@ -197,12 +220,12 @@ angular.module('pounce.services', []).service('MessagesService', function() {
           {
             id: 5,
             author: 'Adam Agent',
-            sent_at: '3 min ago',
+            sentAt: moment().subtract(3, 'minutes').toISOString(),
             body: '@Carrie, I set up some great looking showings for us this Saturday!'
           }, {
             id: 6,
             author: 'Carrie Stevenson',
-            sent_at: '1 hour ago',
+            sentAt: moment().subtract(2, 'hours').toISOString(),
             body: '@Adam, can we see some more places this Saturday? I was really a fan of the brick house we saw last weekend.'
           }
         ];

@@ -59,11 +59,22 @@ angular.module('pounce.controllers', [])
 .controller 'RelationshipMessagesCtrl', ($scope, $stateParams, MessagesService) ->
   console.log "RelationshipMessagesCtrl"
 
+  $scope.newMessage = ''
+
   getRecentMessages = () ->
     $scope.messages = MessagesService.all(id: $stateParams.relationshipId)
     console.log "Messages: ", $scope.messages
 
   getRecentMessages()
+
+  $scope.addMessage = () ->
+    newMessage = {}
+    newMessage.body = $scope.newMessage
+    newMessage.id = 12
+    newMessage.sentAt = moment().toISOString()
+    newMessage.author = 'Adam Agent'
+    $scope.messages.push newMessage
+    $scope.newMessage = ''
 
 .controller 'RelationshipShowingsCtrl', ($scope, $stateParams) ->
   console.log "RelationshipShowingsCtrl"

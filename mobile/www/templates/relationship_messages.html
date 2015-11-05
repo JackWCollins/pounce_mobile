@@ -1,13 +1,22 @@
 <ion-view view-title="Messages">
   <ion-content>
+	  <div class="bar bar-header item-input-inset">
+		  <label class="item-input-wrapper">
+		    <i class="icon ion-ios-search placeholder-icon"></i>
+		    <input type="search" placeholder="Search">
+		  </label>
+		  <button class="button button-clear">
+		    Cancel
+		  </button>
+		</div>
     <ion-list class="messages">
-      <ion-item ng-repeat="message in messages">
+      <ion-item ng-repeat="message in messages | orderBy:'sentAt'">
         <div class="header row">
         	<div class="title col">
         		{{message.author}}
         	</div>
         	<div class="timestamp col">
-        		{{message.sent_at}}
+        		{{message.sentAt | relativeTime }}
         	</div>
         </div>
         <div class="body row">
@@ -20,4 +29,14 @@
       </ion-item>
     </ion-list>
   </ion-content>
+  <ion-footer-bar align-title="left" class="bar-assertive">
+	  <div class="bar bar-footer item-input-inset">
+		  <label class="item-input-wrapper">
+		    <input type="text" placeholder="Message" ng-model="newMessage">
+		  </label>
+		  <button class="button button-outline button-balanced" ng-click="addMessage()">
+		    Submit
+		  </button>
+		</div>
+	</ion-footer-bar>
 </ion-view>
