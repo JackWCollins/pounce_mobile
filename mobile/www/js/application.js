@@ -20,7 +20,7 @@ angular.module('pounce', ['ionic', 'pounce.controllers', 'pounce.services', 'pou
     url: '/messages',
     views: {
       'relationship-messages': {
-        templateUrl: 'templates/relationship_messages.html',
+        templateUrl: 'templates/messages/index.html',
         controller: 'RelationshipMessagesCtrl'
       }
     }
@@ -28,8 +28,16 @@ angular.module('pounce', ['ionic', 'pounce.controllers', 'pounce.services', 'pou
     url: '/showings',
     views: {
       'relationship-showings': {
-        templateUrl: 'templates/relationship_showings.html',
+        templateUrl: 'templates/showings/actions.html',
         controller: 'RelationshipShowingsCtrl'
+      }
+    }
+  }).state('relationship.upcoming-showings', {
+    url: '/upcoming',
+    views: {
+      'relationship-showings': {
+        templateUrl: 'templates/showings/upcoming.html',
+        controller: 'UpcomingShowingsCtrl'
       }
     }
   });
@@ -101,13 +109,21 @@ angular.module('pounce.controllers', []).controller('RelationshipsCtrl', functio
     newMessage = {};
     newMessage.body = $scope.newMessage;
     newMessage.id = 12;
-    newMessage.sentAt = moment().toISOString();
+    newMessage.sentAt = moment().toISOString;
     newMessage.author = 'Adam Agent';
     $scope.messages.push(newMessage);
     return $scope.newMessage = '';
   };
 }).controller('RelationshipShowingsCtrl', function($scope, $stateParams) {
   return console.log("RelationshipShowingsCtrl");
+}).controller('UpcomingShowingsCtrl', function($scope, ShowingsService) {
+  var getUpcomingShowings;
+  console.log("Upcoming Controller");
+  getUpcomingShowings = function() {
+    $scope.upcomingShowings = ShowingsService.upcoming();
+    return console.log("Upcoming Showings: ", $scope.upcomingShowings);
+  };
+  return getUpcomingShowings();
 }).controller('RelationshipCtrl', function($scope, $stateParams) {
   console.log("Single Relationship Ctrl");
   return $scope.relationship = {
@@ -128,48 +144,7 @@ angular.module('pounce.controllers', []).controller('RelationshipsCtrl', functio
   };
 }).controller('LoginCtrl', function($scope) {
   return console.log("In the Login Ctrl");
-}).controller('AppCtrl', function($scope, $ionicModal, $timeout) {
-  $scope.loginData = {};
-  $ionicModal.fromTemplateUrl('templates/login.html', {
-    scope: $scope
-  }).then(function(modal) {
-    return $scope.modal = modal;
-  });
-  $scope.closeLogin = function() {
-    return $scope.modal.hide();
-  };
-  $scope.login = function() {
-    return $scope.modal.show();
-  };
-  return $scope.doLogin = function() {
-    console.log('Doing login', $scope.loginData);
-    return $timeout((function() {
-      return $scope.closeLogin();
-    }), 1000);
-  };
-}).controller('PlaylistsCtrl', function($scope) {
-  return $scope.playlists = [
-    {
-      title: 'Reggaecoffee',
-      id: 1
-    }, {
-      title: 'Chill',
-      id: 2
-    }, {
-      title: 'Dubstep',
-      id: 3
-    }, {
-      title: 'Indie',
-      id: 4
-    }, {
-      title: 'Rap',
-      id: 5
-    }, {
-      title: 'Cowbell',
-      id: 6
-    }
-  ];
-}).controller('PlaylistCtrl', function($scope, $stateParams) {});
+});
 
 angular.module('pounce.filters', []).filter('relativeTime', function() {
   return function(time) {
@@ -230,6 +205,139 @@ angular.module('pounce.services', []).service('MessagesService', function() {
           }
         ];
       }
+    }
+  };
+}).service('ShowingsService', function() {
+  return {
+    upcoming: function(params) {
+      console.log("Made it into the ShowingsService");
+      return [
+        {
+          showingTime: moment().startOf('hour').add(22, 'hours').toISOString(),
+          mlsId: 123412312,
+          address: {
+            crossStreet: '456 Cross Rd',
+            streetName: 'Main St.',
+            postalCode: 80226,
+            city: 'Lakewood',
+            streetNumber: 123,
+            full: '123 Main St.',
+            state: 'CO'
+          },
+          listPrice: 349999,
+          listDate: moment().subtract(4, 'days').toISOString(),
+          mls: {
+            status: 'Active',
+            daysOnMarket: 4
+          },
+          photos: ['img/house1_outside.jpeg', 'img/house1_kitchen.jpeg', 'img/house1_bedroom.jpeg', 'img/house1_patio.jpeg'],
+          property: {
+            yearBuilt: 2007,
+            garageSpaces: 2,
+            area: 2200,
+            lotSize: '3/4 - 1 Acre',
+            bathsFull: 2,
+            bathsHalf: 1,
+            bedrooms: 3,
+            stories: 2,
+            fireplaces: 1,
+            heating: 'Central System, Forced Air, Gas'
+          }
+        }, {
+          showingTime: moment().startOf('hour').add(23, 'hours').toISOString(),
+          mlsId: 543623424,
+          address: {
+            crossStreet: '789 Bent St',
+            streetName: 'Market St.',
+            postalCode: 80246,
+            city: 'Lakewood',
+            streetNumber: 8367,
+            full: '8367 Market St.',
+            state: 'CO'
+          },
+          listPrice: 408999,
+          listDate: moment().subtract(4, 'days').toISOString(),
+          mls: {
+            status: 'Active',
+            daysOnMarket: 4
+          },
+          photos: ['img/house2_outside.jpeg', 'img/house2_kitchen.jpeg', 'img/house2_bedroom.jpeg', 'img/house2_patio'].jpeg,
+          property: {
+            yearBuilt: 2004,
+            garageSpaces: 2,
+            area: 3400,
+            lotSize: '3/4 - 1 Acre',
+            bathsFull: 3,
+            bathsHalf: 1,
+            bedrooms: 4,
+            stories: 2,
+            fireplaces: 1,
+            heating: 'Central System, Forced Air, Gas'
+          }
+        }, {
+          showingTime: moment().startOf('hour').add(24, 'hours').toISOString(),
+          mlsId: 234572547,
+          address: {
+            crossStreet: '346 Curved Ave',
+            streetName: 'Applegate Ave.',
+            postalCode: 80226,
+            city: 'Lakewood',
+            streetNumber: 375,
+            full: '375 Applegate Ave.',
+            state: 'CO'
+          },
+          listPrice: 567000,
+          listDate: moment().subtract(4, 'days').toISOString(),
+          mls: {
+            status: 'Active',
+            daysOnMarket: 4
+          },
+          photos: ['img/house3_outside.jpeg', 'img/house3_kitchen.jpeg', 'img/house3_bedroom.jpeg', 'img/house3_patio'].jpeg,
+          property: {
+            yearBuilt: 2010,
+            garageSpaces: 2,
+            area: 3125,
+            lotSize: '3/4 - 1 Acre',
+            bathsFull: 3,
+            bathsHalf: 1,
+            bedrooms: 3,
+            stories: 2,
+            fireplaces: 1,
+            heating: 'Central System, Forced Air, Gas'
+          }
+        }, {
+          showingTime: moment().startOf('hour').add(25, 'hours').toISOString(),
+          mlsId: 987247223,
+          address: {
+            crossStreet: '908 Straight St.',
+            streetName: 'Winding Rd.',
+            postalCode: 80264,
+            city: 'Lakewood',
+            streetNumber: 624,
+            full: '624 Winding Rd.',
+            state: 'CO'
+          },
+          listPrice: 435000,
+          listDate: moment().subtract(4, 'days').toISOString(),
+          mls: {
+            status: 'Active',
+            daysOnMarket: 4
+          },
+          photos: ['img/house4_outside.jpeg', 'img/house4_kitchen.jpeg', 'img/house4_bedroom.jpeg', 'img/house4_patio'].jpeg,
+          property: {
+            yearBuilt: 2009,
+            garageSpaces: 2,
+            area: 3605,
+            lotSize: '3/4 - 1 Acre',
+            bathsFull: 3,
+            bathsHalf: 1,
+            bedrooms: 4,
+            stories: 2,
+            fireplaces: 1,
+            heating: 'Central System, Forced Air, Gas'
+          }
+        }
+      ];
     }
   };
 });

@@ -1,0 +1,29 @@
+<ion-view view-title="Upcoming">
+	<ion-content>
+		<ion-slide-box show-pager="false" on-slide-changed="slideHasChanged($index)">
+		  <ion-slide ng-repeat="showing in upcomingShowings">
+			  	<div class="showing-summary upcoming">
+
+			  		<div class="time">
+			  			{{ showing.showingTime | date : 'EEEE, MMMM d, h:mm a' }}
+			  		</div>
+
+			    	<div class="address">
+			    		<div class="street">
+			    			{{showing.address.full}}
+			    		</div>
+
+			    		<div class="city-state">
+			    			{{showing.address.city}}, {{showing.address.state}} {{showing.address.postalCode}}
+			    		</div>
+			    	</div>
+
+			    	<div class="photos">
+			    		<img ng-repeat="photo in showing.photos" ng-src="{{photo}}" style="height:200px; padding: 5px 5px 5px 5px;"/>
+			    	</div>
+
+			    </div>
+		  </ion-slide>
+		</ion-slide-box>
+	</ion-content>
+</ion-view>

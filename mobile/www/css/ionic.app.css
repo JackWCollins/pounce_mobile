@@ -9111,3 +9111,12 @@ a.button {
       .showing-actions .add-showing .help-text ul {
         list-style-type: circle;
         margin-left: 30px; }
+
+.showing-summary {
+  text-align: center;
+  margin-top: 10px; }
+  .showing-summary .time {
+    color: rgba(0, 0, 0, 0.7); }
+  .showing-summary .address {
+    font-size: 25px;
+    margin: 10px; }

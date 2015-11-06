@@ -33,15 +33,22 @@ angular.module('pounce', [
       url: '/messages'
       views: 
         'relationship-messages':
-          templateUrl: 'templates/relationship_messages.html'
+          templateUrl: 'templates/messages/index.html'
           controller: 'RelationshipMessagesCtrl'
     )
     .state('relationship.showings',
       url: '/showings'
       views:
         'relationship-showings':
-          templateUrl: 'templates/relationship_showings.html'
+          templateUrl: 'templates/showings/actions.html'
           controller: 'RelationshipShowingsCtrl'
+    )
+    .state('relationship.upcoming-showings',
+      url: '/upcoming'
+      views:
+        'relationship-showings':
+          templateUrl: 'templates/showings/upcoming.html'
+          controller: 'UpcomingShowingsCtrl'
     )
 
   # if none of the above states are matched, use this as the fallback

@@ -19,3 +19,20 @@
 
 	}
 }
+
+.showing-summary {
+	text-align: center;
+	margin-top: 10px;
+
+	.time {
+		color: $black-70;
+	}
+
+	.address {
+		font-size: 25px;
+		margin: 10px;
+	}
+	&.upcoming {
+
+	}
+}
