@@ -1,12 +1,8 @@
-# Ionic Starter App
-# angular.module is a global place for creating, registering and retrieving Angular modules
-# 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-# the 2nd parameter is an array of 'requires'
-# 'starter.controllers' is found in controllers.js
-
-angular.module('starter', [
+angular.module('pounce', [
   'ionic'
-  'starter.controllers'
+  'pounce.controllers'
+  'pounce.services'
+  'pounce.filters'
 ])
 
 .run(($ionicPlatform) ->
@@ -23,42 +19,37 @@ angular.module('starter', [
 
 .config ($stateProvider, $urlRouterProvider) ->
   $stateProvider
-    .state('app',
-      url: '/app'
+    .state('login', 
+      url: '/login' 
+      templateUrl: 'templates/login.html'
+      controller: 'LoginCtrl'
+    )
+    .state('relationship',
+      url: '/relationships/:relationshipId'
       abstract: true
-      templateUrl: 'templates/menu.html'
-      controller: 'AppCtrl'
+      templateUrl: 'templates/relationship.html'
     )
-
-    .state('app.search',
-      url: '/search',
-      views:
-        menuContent:
-          templateUrl: 'templates/search.html'
+    .state('relationship.messages',
+      url: '/messages'
+      views: 
+        'relationship-messages':
+          templateUrl: 'templates/messages/index.html'
+          controller: 'RelationshipMessagesCtrl'
     )
-
-    .state('app.browse',
-      url: '/browse',
+    .state('relationship.showings',
+      url: '/showings'
       views:
-        menuContent:
-          templateUrl: 'templates/browse.html'
+        'relationship-showings':
+          templateUrl: 'templates/showings/actions.html'
+          controller: 'RelationshipShowingsCtrl'
     )
-
-    .state('app.playlists',
-      url: '/playlists',
+    .state('relationship.upcoming-showings',
+      url: '/upcoming'
       views:
-        menuContent:
-          templateUrl: 'templates/playlists.html'
-          controller: 'PlaylistsCtrl'
-    )
-
-    .state('app.single',
-      url: '/playlists/:playlistId'
-      views:
-        menuContent:
-          templateUrl: 'templates/playlist.html'
-          controller: 'PlaylistCtrl'
+        'relationship-showings':
+          templateUrl: 'templates/showings/upcoming.html'
+          controller: 'UpcomingShowingsCtrl'
     )
 
   # if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise '/app/playlists'
+  $urlRouterProvider.otherwise '/login'

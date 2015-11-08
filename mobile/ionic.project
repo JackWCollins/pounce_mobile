@@ -1,4 +1,12 @@
 {
-  "name": "coffee-sidemenu",
-  "app_id": ""
+  "name": "Pounce",
+  "app_id": "42349884",
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*"
+  ]
 }
