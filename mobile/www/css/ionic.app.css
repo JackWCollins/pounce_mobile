@@ -15,6 +15,10 @@ $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
+hr {
+  width: 80%;
+  border: 1px solid rgba(0, 0, 0, 0.3); }
+
 /*!
   Ionicons, v2.0.1
   Created by Ben Sperry for the Ionic Framework, http://ionicons.com/
@@ -9116,10 +9120,21 @@ a.button {
   text-align: center;
   margin-top: 10px; }
   .showing-summary .time {
-    color: rgba(0, 0, 0, 0.7); }
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 15px; }
   .showing-summary .address {
     font-size: 25px;
-    margin: 10px; }
+    margin: 10px;
+    line-height: 30px; }
+  .showing-summary .general-info {
+    margin-bottom: 10px; }
+    .showing-summary .general-info .highlighted-value {
+      font-size: 25px;
+      margin-bottom: 5px;
+      color: #33cd5f;
+      font-weight: bold; }
+    .showing-summary .general-info .value-label {
+      color: rgba(0, 0, 0, 0.5); }
 
 .transparent {
   background: transparent !important; }
@@ -9145,16 +9160,6 @@ a.button {
   width: 100%;
   height: 100%; }
 
-p.info {
-  position: absolute;
-  bottom: 55px;
-  margin: 0 auto;
-  width: 100%;
-  display: block;
-  text-align: center;
-  font-size: 28px;
-  color: #ffffff; }
-
 /* Fix modal backdrop for smaller devices */
 @media (max-width: 679px) {
   .active .modal-backdrop-bg {
@@ -9164,3 +9169,10 @@ p.info {
     transition: opacity 300ms ease-in-out;
     background-color: #000;
     opacity: 0; } }
+
+.round-fab {
+  border-radius: 50%;
+  border: none;
+  height: 52px;
+  width: 52px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.3); }

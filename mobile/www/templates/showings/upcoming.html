@@ -8,6 +8,8 @@
 			  			{{ showing.showingTime | date : 'EEEE, MMMM d, h:mm a' }}
 			  		</div>
 
+			  		<hr>
+
 			    	<div class="address">
 			    		<div class="street">
 			    			{{showing.address.full}}
@@ -22,6 +24,55 @@
 			    		<img ng-src="{{showing.photos[0]}}" style="height:200px; padding: 5px 5px 5px 5px;" ng-click="openModal(showing)"/>
 			    	</div>
 
+			    	<div class="row general-info">
+			    		<div class="col bedrooms">
+			    			<div class="highlighted-value">
+			    				{{showing.property.bedrooms}}
+			    			</div>
+			    			<div class="value-label">
+			    				Bed
+			    			</div>
+			    		</div>
+			    		<div class="col bedrooms">
+			    			<div class="highlighted-value">
+			    				{{showing.property.bathsFull + (showing.property.bathsHalf * 0.5)}}
+			    			</div>
+			    			<div class="value-label">
+			    				Bath
+			    			</div>
+			    		</div>
+			    		<div class="col bedrooms">
+			    			<div class="highlighted-value">
+			    				{{showing.property.area | number:0}}
+			    			</div>
+			    			<div class="value-label">
+			    				sq. ft.
+			    			</div>
+			    		</div>
+			    	</div>
+
+			    	<div class="row general-info">
+			    		<div class="col-20 ">
+			    			<button class="button button-calm icon ion-flag round-fab"></button>
+			    		</div>
+			    		<div class="col days-on-market">
+			    			<div class="highlighted-value">
+			    				{{showing.mls.daysOnMarket}}
+			    			</div>
+			    			<div class="value-label">
+			    				Days on Market
+			    			</div>
+			    		</div>
+			    		<div class="col price">
+			    			<div class="highlighted-value">
+			    				{{showing.listPrice | currency:"$":0}}
+			    			</div>
+			    			<div class="value-label">
+			    				Asking Price
+			    			</div>
+			    		</div>
+			    	</div>
+
 			    </div>
 		  </ion-slide>
 		</ion-slide-box>
@@ -34,7 +85,6 @@
 
 	    <ion-slide ng-repeat="photo in currentShowing.photos">
 	      <img ng-src="{{photo}}" class="fullscreen-image" />
-	      <p class="info">{{showing.address.full}}</p>
 	    </ion-slide>
 
 	  </ion-slide-box>

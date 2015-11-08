@@ -44,55 +44,8 @@ angular.module('pounce', ['ionic', 'pounce.controllers', 'pounce.services', 'pou
   return $urlRouterProvider.otherwise('/login');
 });
 
-angular.module('pounce.controllers', []).controller('RelationshipsCtrl', function($scope) {
-  return $scope.relationships = [
-    {
-      id: 1,
-      clients: [
-        {
-          id: 1,
-          firstName: "Stephanie",
-          lastName: "Folsom"
-        }, {
-          id: 2,
-          firstName: "Steven",
-          lastName: "Folsom"
-        }
-      ],
-      last_message_time: "2015-10-25T22:34:51+00:00",
-      next_showing_time: "2015-10-25T22:34:51+00:00"
-    }, {
-      id: 2,
-      clients: [
-        {
-          id: 3,
-          firstName: "Erik",
-          lastName: "Polk"
-        }, {
-          id: 4,
-          firstName: "Beth",
-          lastName: "Polk"
-        }
-      ],
-      last_message_time: "2015-10-25T22:34:51+00:00",
-      next_showing_time: "2015-10-25T22:34:51+00:00"
-    }, {
-      id: 3,
-      clients: [
-        {
-          id: 5,
-          firstName: "Carrie",
-          lastName: "Stevenson"
-        }, {
-          id: 6,
-          firstName: "Andy",
-          lastName: "Stevenson"
-        }
-      ],
-      last_message_time: "2015-10-25T22:34:51+00:00",
-      next_showing_time: "2015-10-25T22:34:51+00:00"
-    }
-  ];
+angular.module('pounce.controllers', []).controller('RelationshipsCtrl', function($scope, RelationshipsService) {
+  return $scope.relationships = RelationshipsService.all();
 }).controller('RelationshipMessagesCtrl', function($scope, $stateParams, MessagesService) {
   var getRecentMessages;
   console.log("RelationshipMessagesCtrl");
@@ -245,7 +198,7 @@ angular.module('pounce.services', []).service('MessagesService', function() {
             full: '123 Main St.',
             state: 'CO'
           },
-          listPrice: 349999,
+          listPrice: 349900,
           listDate: moment().subtract(4, 'days').toISOString(),
           mls: {
             status: 'Active',
@@ -357,6 +310,59 @@ angular.module('pounce.services', []).service('MessagesService', function() {
             fireplaces: 1,
             heating: 'Central System, Forced Air, Gas'
           }
+        }
+      ];
+    }
+  };
+}).service('RelationshipsService', function() {
+  return {
+    all: function() {
+      return [
+        {
+          id: 1,
+          clients: [
+            {
+              id: 1,
+              firstName: "Stephanie",
+              lastName: "Folsom"
+            }, {
+              id: 2,
+              firstName: "Steven",
+              lastName: "Folsom"
+            }
+          ],
+          last_message_time: "2015-10-25T22:34:51+00:00",
+          next_showing_time: "2015-10-25T22:34:51+00:00"
+        }, {
+          id: 2,
+          clients: [
+            {
+              id: 3,
+              firstName: "Erik",
+              lastName: "Polk"
+            }, {
+              id: 4,
+              firstName: "Beth",
+              lastName: "Polk"
+            }
+          ],
+          last_message_time: "2015-10-25T22:34:51+00:00",
+          next_showing_time: "2015-10-25T22:34:51+00:00"
+        }, {
+          id: 3,
+          clients: [
+            {
+              id: 5,
+              firstName: "Carrie",
+              lastName: "Stevenson"
+            }, {
+              id: 6,
+              firstName: "Andy",
+              lastName: "Stevenson"
+            }
+          ],
+          last_message_time: "2015-10-25T22:34:51+00:00",
+          next_showing_time: "2015-10-25T22:34:51+00:00"
         }
       ];
     }

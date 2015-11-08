@@ -15,15 +15,23 @@ $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
 
+// $balanced:                        #4CAF50 !default;
+
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 $black-90: rgba(black, .9);
 $black-70: rgba(black, .7);
 $black-50: rgba(black, .5);
+$black-30: rgba(black, .3);
+
+hr {
+	width: 80%;
+	border: 1px solid $black-30;
+}
 
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 @import "messages";
 @import "showings";
-
+@import "buttons";

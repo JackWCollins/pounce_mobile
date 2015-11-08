@@ -67,7 +67,7 @@ angular.module('pounce.services', [])
 					streetNumber: 123
 					full: '123 Main St.'
 					state: 'CO'
-				listPrice: 349999
+				listPrice: 349900
 				listDate: moment().subtract(4, 'days').toISOString()
 				mls:
 					status: 'Active'
@@ -173,4 +173,61 @@ angular.module('pounce.services', [])
 					heating: 'Central System, Forced Air, Gas'
 			}
 		]
+)
+
+.service('RelationshipsService', () ->
+	all: () ->
+		[
+	    {
+	      id: 1
+	      clients: [
+	        {
+	          id: 1
+	          firstName: "Stephanie"
+	          lastName: "Folsom"
+	        }
+	        {
+	          id: 2
+	          firstName: "Steven"
+	          lastName: "Folsom"
+	        }
+	      ]
+	      last_message_time: "2015-10-25T22:34:51+00:00"
+	      next_showing_time: "2015-10-25T22:34:51+00:00"
+	    },
+	    {
+	      id: 2
+	      clients: [
+	        {
+	          id: 3
+	          firstName: "Erik"
+	          lastName: "Polk"
+	        }
+	        {
+	          id: 4
+	          firstName: "Beth"
+	          lastName: "Polk"
+	        }
+	      ]
+	      last_message_time: "2015-10-25T22:34:51+00:00"
+	      next_showing_time: "2015-10-25T22:34:51+00:00"
+	    },
+	    {
+	      id: 3
+	      clients: [
+	        {
+	          id: 5
+	          firstName: "Carrie"
+	          lastName: "Stevenson"
+	        }
+	        {
+	          id: 6
+	          firstName: "Andy"
+	          lastName: "Stevenson"
+	        }
+	      ]
+	      last_message_time: "2015-10-25T22:34:51+00:00"
+	      next_showing_time: "2015-10-25T22:34:51+00:00"
+	    }
+	  ]
 )
