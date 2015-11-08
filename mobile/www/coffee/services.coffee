@@ -101,7 +101,7 @@ angular.module('pounce.services', [])
 				mls:
 					status: 'Active'
 					daysOnMarket: 4
-				photos: ['img/house2_outside.jpeg', 'img/house2_kitchen.jpeg', 'img/house2_bedroom.jpeg', 'img/house2_patio']
+				photos: ['img/house2_outside.jpeg', 'img/house2_kitchen.jpeg', 'img/house2_bedroom.jpeg', 'img/house2_patio.jpeg']
 				property: 
 					yearBuilt: 2004
 					garageSpaces: 2
@@ -130,7 +130,7 @@ angular.module('pounce.services', [])
 				mls:
 					status: 'Active'
 					daysOnMarket: 4
-				photos: ['img/house3_outside.jpeg', 'img/house3_kitchen.jpeg', 'img/house3_bedroom.jpeg', 'img/house3_patio']
+				photos: ['img/house3_outside.jpeg', 'img/house3_kitchen.jpeg', 'img/house3_bedroom.jpeg', 'img/house3_patio.jpeg']
 				property: 
 					yearBuilt: 2010
 					garageSpaces: 2
@@ -159,7 +159,7 @@ angular.module('pounce.services', [])
 				mls:
 					status: 'Active'
 					daysOnMarket: 4
-				photos: ['img/house4_outside.jpeg', 'img/house4_kitchen.jpeg', 'img/house4_bedroom.jpeg', 'img/house4_patio']
+				photos: ['img/house4_outside.jpeg', 'img/house4_kitchen.jpeg', 'img/house4_bedroom.jpeg', 'img/house4_patio.jpeg']
 				property: 
 					yearBuilt: 2009
 					garageSpaces: 2

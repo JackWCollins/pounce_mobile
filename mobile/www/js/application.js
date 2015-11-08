@@ -116,14 +116,35 @@ angular.module('pounce.controllers', []).controller('RelationshipsCtrl', functio
   };
 }).controller('RelationshipShowingsCtrl', function($scope, $stateParams) {
   return console.log("RelationshipShowingsCtrl");
-}).controller('UpcomingShowingsCtrl', function($scope, ShowingsService) {
+}).controller('UpcomingShowingsCtrl', function($scope, ShowingsService, $ionicModal, $ionicSlideBoxDelegate) {
   var getUpcomingShowings;
   console.log("Upcoming Controller");
   getUpcomingShowings = function() {
     $scope.upcomingShowings = ShowingsService.upcoming();
     return console.log("Upcoming Showings: ", $scope.upcomingShowings);
   };
-  return getUpcomingShowings();
+  getUpcomingShowings();
+  $ionicModal.fromTemplateUrl('image_modal.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    return $scope.modal = modal;
+  });
+  $scope.openModal = function(showing) {
+    $ionicSlideBoxDelegate.$getByHandle('image-slide-box').slide(0);
+    $scope.modal.show();
+    return $scope.currentShowing = showing;
+  };
+  $scope.closeModal = function() {
+    return $scope.modal.hide();
+  };
+  $scope.$on('$destroy', function() {
+    $scope.modal.remove();
+    return $scope.currentShowing = null;
+  });
+  return $scope.slideChanged = function(index) {
+    return $scope.slideIndex = index;
+  };
 }).controller('RelationshipCtrl', function($scope, $stateParams) {
   console.log("Single Relationship Ctrl");
   return $scope.relationship = {
@@ -261,7 +282,7 @@ angular.module('pounce.services', []).service('MessagesService', function() {
             status: 'Active',
             daysOnMarket: 4
           },
-          photos: ['img/house2_outside.jpeg', 'img/house2_kitchen.jpeg', 'img/house2_bedroom.jpeg', 'img/house2_patio'],
+          photos: ['img/house2_outside.jpeg', 'img/house2_kitchen.jpeg', 'img/house2_bedroom.jpeg', 'img/house2_patio.jpeg'],
           property: {
             yearBuilt: 2004,
             garageSpaces: 2,
@@ -292,7 +313,7 @@ angular.module('pounce.services', []).service('MessagesService', function() {
             status: 'Active',
             daysOnMarket: 4
           },
-          photos: ['img/house3_outside.jpeg', 'img/house3_kitchen.jpeg', 'img/house3_bedroom.jpeg', 'img/house3_patio'],
+          photos: ['img/house3_outside.jpeg', 'img/house3_kitchen.jpeg', 'img/house3_bedroom.jpeg', 'img/house3_patio.jpeg'],
           property: {
             yearBuilt: 2010,
             garageSpaces: 2,
@@ -323,7 +344,7 @@ angular.module('pounce.services', []).service('MessagesService', function() {
             status: 'Active',
             daysOnMarket: 4
           },
-          photos: ['img/house4_outside.jpeg', 'img/house4_kitchen.jpeg', 'img/house4_bedroom.jpeg', 'img/house4_patio'],
+          photos: ['img/house4_outside.jpeg', 'img/house4_kitchen.jpeg', 'img/house4_bedroom.jpeg', 'img/house4_patio.jpeg'],
           property: {
             yearBuilt: 2009,
             garageSpaces: 2,

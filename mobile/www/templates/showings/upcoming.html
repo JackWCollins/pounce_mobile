@@ -19,7 +19,7 @@
 			    	</div>
 
 			    	<div class="photos">
-			    		<img ng-repeat="photo in showing.photos" ng-src="{{photo}}" style="height:200px; padding: 5px 5px 5px 5px;"/>
+			    		<img ng-src="{{showing.photos[0]}}" style="height:200px; padding: 5px 5px 5px 5px;" ng-click="openModal(showing)"/>
 			    	</div>
 
 			    </div>
@@ -27,3 +27,16 @@
 		</ion-slide-box>
 	</ion-content>
 </ion-view>
+
+<script id="image_modal.html" type="text/ng-template">
+	<div class="modal image-modal transparent" ng-click="closeModal()">
+	  <ion-slide-box on-slide-changed="slideChanged(index)" show-pager="false" delegate-handle="image-slide-box">
+
+	    <ion-slide ng-repeat="photo in currentShowing.photos">
+	      <img ng-src="{{photo}}" class="fullscreen-image" />
+	      <p class="info">{{showing.address.full}}</p>
+	    </ion-slide>
+
+	  </ion-slide-box>
+	</div>
+</script>

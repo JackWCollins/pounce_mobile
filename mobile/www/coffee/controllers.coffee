@@ -81,7 +81,7 @@ angular.module('pounce.controllers', [])
   console.log "RelationshipShowingsCtrl"
 )
 
-.controller('UpcomingShowingsCtrl', ($scope, ShowingsService) ->
+.controller('UpcomingShowingsCtrl', ($scope, ShowingsService, $ionicModal, $ionicSlideBoxDelegate) ->
   console.log "Upcoming Controller"
 
   getUpcomingShowings = () ->
@@ -89,6 +89,29 @@ angular.module('pounce.controllers', [])
     console.log "Upcoming Showings: ", $scope.upcomingShowings
 
   getUpcomingShowings()
+
+  $ionicModal.fromTemplateUrl('image_modal.html',
+    scope: $scope
+    animation: 'slide-in-up').then (modal) ->
+      $scope.modal = modal
+
+  $scope.openModal = (showing) ->
+    $ionicSlideBoxDelegate.$getByHandle('image-slide-box').slide 0
+    $scope.modal.show()
+    $scope.currentShowing = showing
+
+  $scope.closeModal = ->
+    $scope.modal.hide()
+
+  # Cleanup the modal when we're done with it!
+  $scope.$on '$destroy', ->
+    $scope.modal.remove()
+    $scope.currentShowing = null
+
+  # Called each time the slide changes
+  $scope.slideChanged = (index) ->
+    $scope.slideIndex = index
+
 )
 
 .controller('RelationshipCtrl', ($scope, $stateParams) ->
