@@ -50,6 +50,13 @@ angular.module('pounce', [
           templateUrl: 'templates/showings/upcoming.html'
           controller: 'UpcomingShowingsCtrl'
     )
+    .state('relationship.previous-showings',
+      url: '/previous'
+      views:
+        'relationship-showings':
+          templateUrl: 'templates/showings/previous.html'
+          controller: 'PreviousShowingsCtrl'
+    )
 
   # if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise '/login'

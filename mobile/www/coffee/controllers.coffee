@@ -62,6 +62,38 @@ angular.module('pounce.controllers', [])
 
 )
 
+.controller('PreviousShowingsCtrl', ($scope, ShowingsService, $ionicModal, $ionicSlideBoxDelegate) ->
+  console.log "In PreviousShowingsCtrl"
+
+  getPreviousShowings = () ->
+    $scope.previousShowings = ShowingsService.previous()
+    console.log "Previous Showings: ", $scope.previousShowings
+
+  getPreviousShowings()
+
+  $ionicModal.fromTemplateUrl('image_modal.html',
+    scope: $scope
+    animation: 'slide-in-up').then (modal) ->
+      $scope.modal = modal
+
+  $scope.openModal = (showing) ->
+    $ionicSlideBoxDelegate.$getByHandle('image-slide-box').slide 0
+    $scope.modal.show()
+    $scope.currentShowing = showing
+
+  $scope.closeModal = ->
+    $scope.modal.hide()
+
+  # Cleanup the modal when we're done with it!
+  $scope.$on '$destroy', ->
+    $scope.modal.remove()
+    $scope.currentShowing = null
+
+  # Called each time the slide changes
+  $scope.slideChanged = (index) ->
+    $scope.slideIndex = index
+)
+
 .controller('RelationshipCtrl', ($scope, $stateParams) ->
   console.log "Single Relationship Ctrl"
   $scope.relationship = {

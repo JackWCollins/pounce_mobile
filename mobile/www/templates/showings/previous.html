@@ -1,0 +1,92 @@
+<ion-view view-title="Previous">
+	<ion-content>
+		<ion-slide-box show-pager="false" on-slide-changed="slideHasChanged($index)">
+		  <ion-slide ng-repeat="showing in previousShowings">
+			  	<div class="showing-summary upcoming">
+
+			  		<div class="time">
+			  			{{ showing.showingTime | date : 'EEEE, MMMM d, h:mm a' }}
+			  		</div>
+
+			  		<hr>
+
+			    	<div class="address">
+			    		<div class="street">
+			    			{{showing.address.full}}
+			    		</div>
+
+			    		<div class="city-state">
+			    			{{showing.address.city}}, {{showing.address.state}} {{showing.address.postalCode}}
+			    		</div>
+			    	</div>
+
+			    	<div class="photos">
+			    		<img ng-src="{{showing.photos[0]}}" style="height:200px; padding: 5px 5px 5px 5px;" ng-click="openModal(showing)"/>
+			    	</div>
+
+			    	<div class="row general-info">
+			    		<div class="col bedrooms">
+			    			<div class="highlighted-value">
+			    				{{showing.property.bedrooms}}
+			    			</div>
+			    			<div class="value-label">
+			    				Bed
+			    			</div>
+			    		</div>
+			    		<div class="col bedrooms">
+			    			<div class="highlighted-value">
+			    				{{showing.property.bathsFull + (showing.property.bathsHalf * 0.5)}}
+			    			</div>
+			    			<div class="value-label">
+			    				Bath
+			    			</div>
+			    		</div>
+			    		<div class="col bedrooms">
+			    			<div class="highlighted-value">
+			    				{{showing.property.area | number:0}}
+			    			</div>
+			    			<div class="value-label">
+			    				sq. ft.
+			    			</div>
+			    		</div>
+			    	</div>
+
+			    	<div class="row general-info">
+			    		<div class="col-20 ">
+			    			<button class="button button-balanced icon ion-star round-fab"></button>
+			    		</div>
+			    		<div class="col days-on-market">
+			    			<div class="highlighted-value">
+			    				{{showing.mls.daysOnMarket}}
+			    			</div>
+			    			<div class="value-label">
+			    				Days on Market
+			    			</div>
+			    		</div>
+			    		<div class="col price">
+			    			<div class="highlighted-value">
+			    				{{showing.listPrice | currency:"$":0}}
+			    			</div>
+			    			<div class="value-label">
+			    				Asking Price
+			    			</div>
+			    		</div>
+			    	</div>
+
+			    </div>
+		  </ion-slide>
+		</ion-slide-box>
+	</ion-content>
+</ion-view>
+
+<script id="image_modal.html" type="text/ng-template">
+	<div class="modal image-modal transparent" ng-click="closeModal()">
+	  <ion-slide-box on-slide-changed="slideChanged(index)" show-pager="false" delegate-handle="image-slide-box">
+
+	    <ion-slide ng-repeat="photo in currentShowing.photos">
+	      <img ng-src="{{photo}}" class="fullscreen-image" />
+	    </ion-slide>
+
+	  </ion-slide-box>
+	</div>
+</script>
