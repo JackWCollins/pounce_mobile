@@ -9170,6 +9170,10 @@ a.button {
     background-color: #000;
     opacity: 0; } }
 
+.showing-item {
+  text-align: center;
+  line-height: 2em; }
+
 .round-fab {
   border-radius: 50%;
   border: none;

@@ -3,6 +3,8 @@ angular.module('pounce', [
   'pounce.controllers'
   'pounce.services'
   'pounce.filters'
+  'ionic-datepicker'
+  'ionic-timepicker'
 ])
 
 .run(($ionicPlatform) ->
@@ -56,6 +58,13 @@ angular.module('pounce', [
         'relationship-showings':
           templateUrl: 'templates/showings/previous.html'
           controller: 'PreviousShowingsCtrl'
+    )
+    .state('relationship.add-showing',
+      url: '/add-showing'
+      views:
+        'relationship-showings':
+          templateUrl: 'templates/showings/add.html'
+          controller: 'AddShowingCtrl'
     )
 
   # if none of the above states are matched, use this as the fallback

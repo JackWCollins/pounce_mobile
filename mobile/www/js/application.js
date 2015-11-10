@@ -1,4 +1,4 @@
-angular.module('pounce', ['ionic', 'pounce.controllers', 'pounce.services', 'pounce.filters']).run(function($ionicPlatform) {
+angular.module('pounce', ['ionic', 'pounce.controllers', 'pounce.services', 'pounce.filters', 'ionic-datepicker', 'ionic-timepicker']).run(function($ionicPlatform) {
   return $ionicPlatform.ready(function() {
     if (window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -46,6 +46,14 @@ angular.module('pounce', ['ionic', 'pounce.controllers', 'pounce.services', 'pou
       'relationship-showings': {
         templateUrl: 'templates/showings/previous.html',
         controller: 'PreviousShowingsCtrl'
+      }
+    }
+  }).state('relationship.add-showing', {
+    url: '/add-showing',
+    views: {
+      'relationship-showings': {
+        templateUrl: 'templates/showings/add.html',
+        controller: 'AddShowingCtrl'
       }
     }
   });
@@ -134,6 +142,60 @@ angular.module('pounce.controllers', []).controller('RelationshipsCtrl', functio
   });
   return $scope.slideChanged = function(index) {
     return $scope.slideIndex = index;
+  };
+}).controller('AddShowingCtrl', function($scope, ShowingsService) {
+  var datePickerCallback, midnightToday, secondsSinceMidnightDate, startOfNextHour, timePickerCallback;
+  console.log("In add showing controller");
+  secondsSinceMidnightDate = (new Date()).getHours() * 60 * 60;
+  midnightToday = moment().clone().local().startOf('day');
+  startOfNextHour = moment().clone().local().startOf('hour').add(1, 'hour');
+  $scope.secondsSinceMidnight = startOfNextHour.diff(midnightToday, 'seconds');
+  $scope.newShowing = {
+    date: new Date(),
+    time: startOfNextHour.toISOString()
+  };
+  $scope.newShowingListing = ShowingsService.upcoming()[0];
+  console.log("utc offset", moment().local().utcOffset() / 60);
+  datePickerCallback = function(date) {
+    console.log("In datePickerCallback with date: ", date);
+    return $scope.newShowing.date = date;
+  };
+  timePickerCallback = function(secondsSinceMidnight) {
+    var newTime;
+    newTime = moment().local().startOf('day').add(secondsSinceMidnight, 'seconds');
+    return $scope.newShowing.time = newTime.toISOString();
+  };
+  $scope.datepickerObject = {
+    titleLabel: 'Showing Date',
+    todayLabel: 'Today',
+    closeLabel: 'Close',
+    setLabel: 'Set',
+    setButtonType: 'button-balanced',
+    todayButtonType: 'button-stable',
+    closeButtonType: 'button-stable',
+    inputDate: new Date(),
+    mondayFirst: false,
+    templateType: 'modal',
+    showTodayButton: 'true',
+    modalHeaderColor: 'bar-balanced',
+    modalFooterColor: 'bar-balanced',
+    from: new Date(2012, 8, 2),
+    to: new Date(2018, 8, 25),
+    callback: function(value) {
+      return datePickerCallback(value);
+    },
+    dateFormat: 'MM-DD-YYYY',
+    closeOnSelect: false
+  };
+  return $scope.timePickerObject = {
+    inputEpochTime: $scope.secondsSinceMidnight,
+    format: 12,
+    titleLabel: 'Showing Time',
+    setButtonType: 'button-balanced',
+    closeButtonType: 'button-stable',
+    callback: function(secondsSinceMidnight) {
+      return timePickerCallback(secondsSinceMidnight);
+    }
   };
 }).controller('RelationshipCtrl', function($scope, $stateParams) {
   console.log("Single Relationship Ctrl");

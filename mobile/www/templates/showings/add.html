@@ -1,0 +1,44 @@
+<ion-view view-title="Add Showing">
+	<ion-content>
+		<div class="list">
+
+			<div class="item">
+			  <ionic-datepicker input-obj="datepickerObject">
+				  <button class="button button-outline button-block button-balanced"> {{ newShowing.date | date:'EEEE, MMMM d' }}</button>
+				</ionic-datepicker>
+			</div>
+
+			<div class="item">
+				<ionic-timepicker input-obj="timePickerObject">
+				  <button class="button button-outline button-block button-balanced">
+				    {{ newShowing.time | date:'h:mm a'}}
+				  </button>
+				</ionic-timepicker>
+			</div>
+
+		  <label class="item item-input item-floating-label">
+		    <span class="input-label">MLS ID</span>
+		    <input type="text" placeholder="MLS ID" ng-model="newShowing.mlsId">
+		  </label>
+
+		  <div class="item showing-item row" ng-if="newShowing.mlsId.length > 4">
+		  	<div class="col-33">
+					<img ng-src="{{newShowingListing.photos[0]}}" style="width:5em"/>
+		  	</div>
+		  	<div class="col-67">
+		  		<div>
+		  			{{newShowingListing.address.full}}, {{newShowingListing.address.city}}
+		  		</div>
+		  		<div>
+		  			{{newShowingListing.property.bedrooms}} Bed, {{newShowingListing.property.bathsFull + newShowingListing.property.bathsHalf}} Bath, {{newShowingListing.listPrice | currency:"$":0}}
+		  		</div>
+		  	</div>
+		  </div>
+
+		  <div class="item"  ng-if="newShowing.mlsId.length > 4">
+		  	<button class="button button-block button-calm" ui-sref="relationship.showings">Save Showing</button>
+		  </div>
+		  
+		</div>
+	</ion-content>
+</ion-view>
