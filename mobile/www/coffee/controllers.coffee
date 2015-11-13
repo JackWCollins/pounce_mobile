@@ -4,7 +4,7 @@ angular.module('pounce.controllers', [])
   $scope.relationships = RelationshipsService.all()
 )
 
-.controller('RelationshipMessagesCtrl', ($scope, $stateParams, MessagesService) ->
+.controller('RelationshipMessagesCtrl', ($scope, $stateParams, MessagesService, $ionicScrollDelegate) ->
   console.log "RelationshipMessagesCtrl"
 
   $scope.newMessage = ''
@@ -23,7 +23,7 @@ angular.module('pounce.controllers', [])
     newMessage.author = 'Adam Agent'
     $scope.messages.push newMessage
     $scope.newMessage = ''
-    console.log "Messages after adding: ", $scope.messages
+    $ionicScrollDelegate.scrollBottom()
 )
 
 .controller('RelationshipShowingsCtrl', ($scope, $stateParams) ->

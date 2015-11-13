@@ -62,7 +62,7 @@ angular.module('pounce', ['ionic', 'pounce.controllers', 'pounce.services', 'pou
 
 angular.module('pounce.controllers', []).controller('RelationshipsCtrl', function($scope, RelationshipsService) {
   return $scope.relationships = RelationshipsService.all();
-}).controller('RelationshipMessagesCtrl', function($scope, $stateParams, MessagesService) {
+}).controller('RelationshipMessagesCtrl', function($scope, $stateParams, MessagesService, $ionicScrollDelegate) {
   var getRecentMessages;
   console.log("RelationshipMessagesCtrl");
   $scope.newMessage = '';
@@ -81,8 +81,8 @@ angular.module('pounce.controllers', []).controller('RelationshipsCtrl', functio
     newMessage.sentAt = moment().local().toISOString();
     newMessage.author = 'Adam Agent';
     $scope.messages.push(newMessage);
-    $scope.newMessage = {};
-    return console.log("Messages after adding: ", $scope.messages);
+    $scope.newMessage = '';
+    return $ionicScrollDelegate.scrollBottom();
   };
 }).controller('RelationshipShowingsCtrl', function($scope, $stateParams) {
   return console.log("RelationshipShowingsCtrl");

@@ -10,7 +10,7 @@
 		  </button>
 		</div>
     <ion-list class="messages">
-      <ion-item ng-repeat="message in messages | orderBy:'sentAt'">
+      <ion-item ng-repeat="message in messages | orderBy:'sentAt'" class="fx-fade-normal">
         <div class="header row">
         	<div class="title col">
         		{{message.author}}
