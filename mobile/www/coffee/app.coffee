@@ -5,6 +5,7 @@ angular.module('pounce', [
   'pounce.filters'
   'ionic-datepicker'
   'ionic-timepicker'
+  'ngFx'
 ])
 
 .run(($ionicPlatform) ->

@@ -1,4 +1,4 @@
-angular.module('pounce', ['ionic', 'pounce.controllers', 'pounce.services', 'pounce.filters', 'ionic-datepicker', 'ionic-timepicker']).run(function($ionicPlatform) {
+angular.module('pounce', ['ionic', 'pounce.controllers', 'pounce.services', 'pounce.filters', 'ionic-datepicker', 'ionic-timepicker', 'ngFx']).run(function($ionicPlatform) {
   return $ionicPlatform.ready(function() {
     if (window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
