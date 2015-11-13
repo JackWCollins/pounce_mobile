@@ -9170,6 +9170,10 @@ a.button {
     background-color: #000;
     opacity: 0; } }
 
+.showing-item {
+  text-align: center;
+  line-height: 2em; }
+
 .round-fab {
   border-radius: 50%;
   border: none;
@@ -9181,5 +9185,5 @@ a.button {
   background-color: #33cd5f; }
   .login .logo {
     text-align: center;
-    margin-top: 100px;
-    margin-bottom: 100px; }
+    margin-top: 150px;
+    margin-bottom: 200px; }
