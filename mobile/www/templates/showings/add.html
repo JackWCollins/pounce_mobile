@@ -16,12 +16,7 @@
 				</ionic-timepicker>
 			</div>
 
-		  <label class="item item-input item-floating-label">
-		    <span class="input-label">MLS ID</span>
-		    <input type="text" placeholder="MLS ID" ng-model="newShowing.mlsId">
-		  </label>
-
-		  <div class="item showing-item row" ng-if="newShowing.mlsId.length > 4">
+			<div class="item showing-item row" ng-if="newShowing.mlsId.length > 4">
 		  	<div class="col-33">
 					<img ng-src="{{newShowingListing.photos[0]}}" style="width:5em"/>
 		  	</div>
@@ -34,6 +29,11 @@
 		  		</div>
 		  	</div>
 		  </div>
+
+		  <label class="item item-input item-floating-label">
+		    <span class="input-label">MLS ID</span>
+		    <input type="text" placeholder="MLS ID (enter 5+ digits)" ng-model="newShowing.mlsId">
+		  </label>
 
 		  <div class="item"  ng-if="newShowing.mlsId.length > 4">
 		  	<button class="button button-block button-calm" ui-sref="relationship.showings">Save Showing</button>

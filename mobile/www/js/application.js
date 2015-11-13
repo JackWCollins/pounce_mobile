@@ -78,10 +78,11 @@ angular.module('pounce.controllers', []).controller('RelationshipsCtrl', functio
     newMessage = {};
     newMessage.body = $scope.newMessage;
     newMessage.id = 12;
-    newMessage.sentAt = moment().toISOString;
+    newMessage.sentAt = moment().local().toISOString();
     newMessage.author = 'Adam Agent';
     $scope.messages.push(newMessage);
-    return $scope.newMessage = '';
+    $scope.newMessage = {};
+    return console.log("Messages after adding: ", $scope.messages);
   };
 }).controller('RelationshipShowingsCtrl', function($scope, $stateParams) {
   return console.log("RelationshipShowingsCtrl");

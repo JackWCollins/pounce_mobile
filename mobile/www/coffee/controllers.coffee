@@ -19,10 +19,11 @@ angular.module('pounce.controllers', [])
     newMessage = {}
     newMessage.body = $scope.newMessage
     newMessage.id = 12
-    newMessage.sentAt = moment().toISOString
+    newMessage.sentAt = moment().local().toISOString()
     newMessage.author = 'Adam Agent'
     $scope.messages.push newMessage
-    $scope.newMessage = ''
+    $scope.newMessage = {}
+    console.log "Messages after adding: ", $scope.messages
 )
 
 .controller('RelationshipShowingsCtrl', ($scope, $stateParams) ->
