@@ -1,28 +1,14 @@
-== README
+== PouncePro
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+I am using these links to get set up:
 
-Things you may want to cover:
+http://www.angularonrails.com/how-to-wire-up-ruby-on-rails-and-angularjs-as-a-single-page-application-gulp-version/
 
-* Ruby version
+https://www.airpair.com/ruby-on-rails/posts/authentication-with-angularjs-and-ruby-on-rails
 
-* System dependencies
+This is helpful for the ui-router layout:
 
-* Configuration
+http://stackoverflow.com/questions/32039342/how-to-correctly-implement-multiple-views-with-ui-router-in-angular
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Next steps:
+The ui-router setup will be madness. I think the best way to go will be to build it up. First, just create a clients list that links to a client detail in the main pane. Build up a two-pane client detail from there. Then, make the main activity pane switchable via url and the buttons on the client list. 
