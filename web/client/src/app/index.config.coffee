@@ -1,5 +1,5 @@
 angular.module 'pounce'
-  .config ($logProvider, toastrConfig) ->
+  .config ($logProvider, toastrConfig, $mdThemingProvider) ->
     'ngInject'
     # Enable log
     $logProvider.debugEnabled true
@@ -9,3 +9,9 @@ angular.module 'pounce'
     toastrConfig.positionClass = 'toast-top-right'
     toastrConfig.preventDuplicates = true
     toastrConfig.progressBar = true
+
+    # Angular Material theming
+
+    $mdThemingProvider.theme('default')
+        .primaryPalette('green')
+        .accentPalette('blue')

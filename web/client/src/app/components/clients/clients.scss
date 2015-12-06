@@ -1,0 +1,20 @@
+.client-detail {
+	.client-activities {
+		width: 100%;
+
+		md-pagination-wrapper {
+			width: 100%;
+		}
+	}
+}
+
+.notification-panel {
+	.notification {
+		flex-wrap: wrap;
+
+		md-icon {
+			margin: 5px;
+			font-size: 32px;
+		}
+	}
+}
