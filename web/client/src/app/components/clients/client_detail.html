@@ -44,30 +44,15 @@
     <md-card>
       <md-list class='notification-panel'>
 
-        <md-list-item class='notification md-3-line'>
-          <div flex='50'>Adam Agent</div>
-          <div flex='50'>20 minutes ago</div>
-          <div flex='20'><md-icon >chat_bubble_outline</md-icon></div>
-          <div flex='80'>Notification 1</div>
+        <md-list-item class='notification md-3-line' ng-repeat-start='message in clientCtrl.messages'>
+          <div flex='50'>{{message.title}}</div>
+          <div flex='50' class="message-time">{{message.time | date:'shortTime'}}</div>
+          <div flex='20' ng-if="message.type == 'message'"><md-icon>chat_bubble_outline</md-icon></div>
+          <div flex='20' ng-if="message.type == 'showing'"><md-icon>home</md-icon></div>
+          <div flex='80'>{{message.body}}</div>
         </md-list-item>
 
-        <md-divider></md-divider>
-
-        <md-list-item class='notification md-3-line'>
-          <div flex='50'>Adam Agent</div>
-          <div flex='50'>20 minutes ago</div>
-          <div flex='20'><md-icon >chat_bubble_outline</md-icon></div>
-          <div flex='80'>Notification 2</div>
-        </md-list-item>
-
-        <md-divider></md-divider>
-
-        <md-list-item class='notification md-3-line'>
-          <div flex='50'>Adam Agent</div>
-          <div flex='50'>20 minutes ago</div>
-          <div flex='20'><md-icon >chat_bubble_outline</md-icon></div>
-          <div flex='80'>Notification 3</div>
-        </md-list-item>
+        <md-divider ng-repeat-end></md-divider>
 
       </md-list>
     </md-card>
