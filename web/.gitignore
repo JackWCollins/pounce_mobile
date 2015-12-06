@@ -15,3 +15,6 @@
 /log/*
 !/log/.keep
 /tmp
+
+# Ignore node modules for web client
+/web/client/node_modules
