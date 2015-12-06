@@ -1,0 +1,36 @@
+<div layout="column" layout-fill>
+
+  <md-content>
+    <acme-navbar></acme-navbar>
+
+    <div layout="row">
+      <div flex='15' class="client-list">
+        <md-card ui-sref="home.clientDetail({clientId: 1})" class="client">
+          <md-card-content>
+            <h3>Stephanie and Steven</h3>
+          </md-card-content>
+        </md-card>
+
+        <md-card ui-sref="home.clientDetail({clientId: 2})" class="client">
+          <md-card-content>
+            <h3>Erik and Beth</h3>
+          </md-card-content>
+        </md-card>
+
+        <md-card ui-sref="home.clientDetail({clientId: 1})" class="client">
+          <md-card-content>
+            <h3>Carrie and Andy</h3>
+          </md-card-content>
+        </md-card>
+      </div>
+
+      <div flex='85'>
+        <ui-view/>
+      </div>
+
+    </div>
+
+    
+  </md-content>
+
+</div>

@@ -5,3 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Showing.create([
+	{time: 3.hours.from_now},
+	{time: 4.hours.from_now},
+	{time: 5.hours.from_now}
+])

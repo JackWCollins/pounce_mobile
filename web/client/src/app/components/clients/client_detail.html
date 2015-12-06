@@ -1,0 +1,61 @@
+<div layout='row' class='client-detail'>  
+  <div layout-align="center" flex='65' class='client-activities'>
+    <md-tabs md-dynamic-height md-border-bottom>
+      <md-tab>
+        <md-tab-label>
+          <span>Info</span>
+        </md-tab-label>
+        <md-tab-body>
+          <h1 class="md-display-2">Client Info</h1>
+        </md-tab-body>
+      </md-tab>
+      <md-tab>
+        <md-tab-label>
+          <span>Priorities</span>
+        </md-tab-label>
+        <md-tab-body>
+          <h1 class="md-display-2">Priorities</h1>
+        </md-tab-body>
+      </md-tab>
+      <md-tab>
+        <md-tab-label>
+          <span>Showings</span>
+        </md-tab-label>
+        <md-tab-body>
+          <h1 class="md-display-2">Showings</h1>
+        </md-tab-body>
+      </md-tab>
+    </md-tabs>
+
+
+<!--     <md-card ng-repeat="awesomeThing in main.awesomeThings | orderBy:'rank'">
+      <md-card-content>
+        <img class="pull-right" ng-src="assets/images/{{ awesomeThing.logo }}" alt="{{ awesomeThing.title }}">
+        <h3 class="md-title">{{ awesomeThing.title }}</h3>
+        <p>{{ awesomeThing.description }}</p>
+      </md-card-content>
+      <div class="md-action-buttons">
+        <md-button ng-href="{{ awesomeThing.url }}">Website</md-button>
+      </div>
+    </md-card> -->
+  </div>
+
+  <div flex='35'>
+    <md-card>
+      <md-list class='notification-panel'>
+
+        <md-list-item class='notification md-3-line' ng-repeat-start='message in clientCtrl.messages'>
+          <div flex='50'>{{message.title}}</div>
+          <div flex='50' class="message-time">{{message.time | date:'shortTime'}}</div>
+          <div flex='20' ng-if="message.type == 'message'"><md-icon>chat_bubble_outline</md-icon></div>
+          <div flex='20' ng-if="message.type == 'showing'"><md-icon>home</md-icon></div>
+          <div flex='80'>{{message.body}}</div>
+        </md-list-item>
+
+        <md-divider ng-repeat-end></md-divider>
+
+      </md-list>
+    </md-card>
+    
+  </div>
+</div>
