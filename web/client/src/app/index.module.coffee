@@ -8,6 +8,8 @@ dependencies = [
   'ngResource',
   'ui.router',
   'ngMaterial',
-  'toastr']
+  'toastr',
+  'ng-token-auth'
+]
 
 angular.module 'pounce', dependencies

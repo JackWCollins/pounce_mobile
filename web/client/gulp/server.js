@@ -12,6 +12,19 @@ var util = require('util');
 var proxyMiddleware = require('http-proxy-middleware');
 var exec = require('child_process').exec;
 
+var ngConstant = require('gulp-ng-constant');
+var concat = require('gulp-concat');
+var es = require('event-stream');
+var argv = require('yargs').argv;
+var enviroment = argv.env || 'development';
+
+function makeConfig() {
+  return gulp.src('../server_config.json')
+    .pipe(gulpNgConfig('app.config', {
+      environment: 'production' // or maybe use process.env.NODE_ENV here
+    }));
+}
+
 function browserSyncInit(baseDir, browser) {
   browser = browser === undefined ? 'default' : browser;
 
@@ -68,4 +81,19 @@ gulp.task('serve:e2e', ['inject'], function () {
 
 gulp.task('serve:e2e-dist', ['build'], function () {
   browserSyncInit(conf.paths.dist, []);
+});
+
+// Add a config file to client/server config anf then run this task. For details:
+// http://stackoverflow.com/questions/16339595/how-do-i-configure-different-environments-in-angular-js
+// https://www.npmjs.com/package/gulp-ng-constant#configuration-in-gulpfilejs
+// http://paulsalaets.com/posts/setting-angular-config-with-gulp/
+
+gulp.task('config', function () {
+  var config = gulp.src('server_config/' + enviroment + '.json')
+    .pipe(ngConstant({name: 'app.config'}));
+  var scripts = gulp.src('js/*');
+  return es.merge(config, scripts)
+    .pipe(concat('app.js'))
+    .pipe(gulp.dest(path.join(conf.paths.dist, '/')))
+    .on('error', function() { });
 });

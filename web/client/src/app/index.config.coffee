@@ -1,5 +1,5 @@
 angular.module 'pounce'
-  .config ($logProvider, toastrConfig, $mdThemingProvider) ->
+  .config ($logProvider, toastrConfig, $mdThemingProvider, $authProvider) ->
     'ngInject'
     # Enable log
     $logProvider.debugEnabled true
@@ -13,5 +13,11 @@ angular.module 'pounce'
     # Angular Material theming
 
     $mdThemingProvider.theme('default')
-        .primaryPalette('green')
-        .accentPalette('blue')
+      .primaryPalette('green')
+      .accentPalette('blue')
+
+    $authProvider.configure(
+      apiUrl: '/api/v1'
+    )
+
+

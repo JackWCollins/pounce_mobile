@@ -12,5 +12,10 @@ angular.module 'pounce'
         templateUrl: 'app/components/clients/client_detail.html'
         controller: 'ClientController'
         controllerAs: 'clientCtrl'
+      .state 'login',
+        url: '/login'
+        templateUrl: 'app/components/user_sessions/new.html'
+        controller: 'LoginController'
+        controllerAs: 'login'
 
     $urlRouterProvider.otherwise '/'
