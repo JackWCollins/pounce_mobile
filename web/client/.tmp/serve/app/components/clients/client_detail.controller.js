@@ -1,0 +1,16 @@
+(function() {
+  angular.module('pounce').controller('ClientController', function($timeout, webDevTec, toastr, messagesService, $stateParams) {
+    'ngInject';
+    var vm;
+    vm = this;
+    vm.clients = [];
+    vm.classAnimation = '';
+    vm.messages = messagesService.all({
+      clientId: $stateParams.clientId
+    });
+    return console.log("In ClientController with vm: ", vm);
+  });
+
+}).call(this);
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvbXBvbmVudHMvY2xpZW50cy9jbGllbnRfZGV0YWlsLmNvbnRyb2xsZXIuY29mZmVlIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQUEsT0FBTyxDQUFDLE1BQVIsQ0FBZSxRQUFmLENBQ0UsQ0FBQyxVQURILENBQ2Msa0JBRGQsRUFDa0MsU0FBQyxRQUFELEVBQVcsU0FBWCxFQUFzQixNQUF0QixFQUE4QixlQUE5QixFQUErQyxZQUEvQztJQUM5QjtBQUFBLFFBQUE7SUFDQSxFQUFBLEdBQUs7SUFFTCxFQUFFLENBQUMsT0FBSCxHQUFhO0lBQ2IsRUFBRSxDQUFDLGNBQUgsR0FBb0I7SUFDcEIsRUFBRSxDQUFDLFFBQUgsR0FBYyxlQUFlLENBQUMsR0FBaEIsQ0FBb0I7TUFBQSxRQUFBLEVBQVUsWUFBWSxDQUFDLFFBQXZCO0tBQXBCO1dBQ2QsT0FBTyxDQUFDLEdBQVIsQ0FBWSwrQkFBWixFQUE2QyxFQUE3QztFQVA4QixDQURsQztBQUFBIiwiZmlsZSI6ImNvbXBvbmVudHMvY2xpZW50cy9jbGllbnRfZGV0YWlsLmNvbnRyb2xsZXIuanMiLCJzb3VyY2VSb290IjoiL3NvdXJjZS8iLCJzb3VyY2VzQ29udGVudCI6WyJhbmd1bGFyLm1vZHVsZSAncG91bmNlJ1xuICAuY29udHJvbGxlciAnQ2xpZW50Q29udHJvbGxlcicsICgkdGltZW91dCwgd2ViRGV2VGVjLCB0b2FzdHIsIG1lc3NhZ2VzU2VydmljZSwgJHN0YXRlUGFyYW1zKSAtPlxuICAgICduZ0luamVjdCdcbiAgICB2bSA9IHRoaXNcblxuICAgIHZtLmNsaWVudHMgPSBbXVxuICAgIHZtLmNsYXNzQW5pbWF0aW9uID0gJydcbiAgICB2bS5tZXNzYWdlcyA9IG1lc3NhZ2VzU2VydmljZS5hbGwoY2xpZW50SWQ6ICRzdGF0ZVBhcmFtcy5jbGllbnRJZClcbiAgICBjb25zb2xlLmxvZyBcIkluIENsaWVudENvbnRyb2xsZXIgd2l0aCB2bTogXCIsIHZtXG4iXX0=

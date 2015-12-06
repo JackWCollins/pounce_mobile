@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for app/main/main.controller.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">all files</a> / <a href="index.html">app/main/</a> main.controller.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>21/21</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/0</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>7/7</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>21/21</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">20×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">(function() {
+  angular.module('pounce').controller('MainController', function($timeout, webDevTec, toastr) {
+    'ngInject';
+    var activate, getWebDevTec, showToastr, vm;
+    vm = this;
+    activate = function() {
+      getWebDevTec();
+      $timeout((function() {
+        vm.classAnimation = 'rubberBand';
+      }), 4000);
+    };
+    showToastr = function() {
+      toastr.info('Fork &lt;a href="https://github.com/Swiip/generator-gulp-angular" target="_blank"&gt;&lt;b&gt;generator-gulp-angular&lt;/b&gt;&lt;/a&gt;');
+      vm.classAnimation = '';
+    };
+    getWebDevTec = function() {
+      vm.awesomeThings = webDevTec.getTec();
+      angular.forEach(vm.awesomeThings, function(awesomeThing) {
+        awesomeThing.rank = Math.random();
+      });
+    };
+    vm.awesomeThings = [];
+    vm.classAnimation = '';
+    vm.creationDate = 1447732377382;
+    vm.showToastr = showToastr;
+    activate();
+  });
+&nbsp;
+}).call(this);
+&nbsp;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1haW4vbWFpbi5jb250cm9sbGVyLmNvZmZlZSJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUFBLE9BQU8sQ0FBQyxNQUFSLENBQWUsUUFBZixDQUNFLENBQUMsVUFESCxDQUNjLGdCQURkLEVBQ2dDLFNBQUMsUUFBRCxFQUFXLFNBQVgsRUFBc0IsTUFBdEI7SUFDNUI7QUFBQSxRQUFBO0lBQ0EsRUFBQSxHQUFLO0lBQ0wsUUFBQSxHQUFXLFNBQUE7TUFDVCxZQUFBLENBQUE7TUFDQSxRQUFBLENBQVMsQ0FBQyxTQUFBO1FBQ1IsRUFBRSxDQUFDLGNBQUgsR0FBb0I7TUFEWixDQUFELENBQVQsRUFHRyxJQUhIO0lBRlM7SUFRWCxVQUFBLEdBQWEsU0FBQTtNQUNYLE1BQU0sQ0FBQyxJQUFQLENBQVksa0hBQVo7TUFDQSxFQUFFLENBQUMsY0FBSCxHQUFvQjtJQUZUO0lBS2IsWUFBQSxHQUFlLFNBQUE7TUFDYixFQUFFLENBQUMsYUFBSCxHQUFtQixTQUFTLENBQUMsTUFBVixDQUFBO01BQ25CLE9BQU8sQ0FBQyxPQUFSLENBQWdCLEVBQUUsQ0FBQyxhQUFuQixFQUFrQyxTQUFDLFlBQUQ7UUFDaEMsWUFBWSxDQUFDLElBQWIsR0FBb0IsSUFBSSxDQUFDLE1BQUwsQ0FBQTtNQURZLENBQWxDO0lBRmE7SUFPZixFQUFFLENBQUMsYUFBSCxHQUFtQjtJQUNuQixFQUFFLENBQUMsY0FBSCxHQUFvQjtJQUNwQixFQUFFLENBQUMsWUFBSCxHQUFrQjtJQUNsQixFQUFFLENBQUMsVUFBSCxHQUFnQjtJQUNoQixRQUFBLENBQUE7RUEzQjRCLENBRGhDO0FBQUEiLCJmaWxlIjoibWFpbi9tYWluLmNvbnRyb2xsZXIuanMiLCJzb3VyY2VSb290IjoiL3NvdXJjZS8iLCJzb3VyY2VzQ29udGVudCI6WyJhbmd1bGFyLm1vZHVsZSAncG91bmNlJ1xuICAuY29udHJvbGxlciAnTWFpbkNvbnRyb2xsZXInLCAoJHRpbWVvdXQsIHdlYkRldlRlYywgdG9hc3RyKSAtPlxuICAgICduZ0luamVjdCdcbiAgICB2bSA9IHRoaXNcbiAgICBhY3RpdmF0ZSA9IC0+XG4gICAgICBnZXRXZWJEZXZUZWMoKVxuICAgICAgJHRpbWVvdXQgKC0+XG4gICAgICAgIHZtLmNsYXNzQW5pbWF0aW9uID0gJ3J1YmJlckJhbmQnXG4gICAgICAgIHJldHVyblxuICAgICAgKSwgNDAwMFxuICAgICAgcmV0dXJuXG5cbiAgICBzaG93VG9hc3RyID0gLT5cbiAgICAgIHRvYXN0ci5pbmZvICdGb3JrIDxhIGhyZWY9XCJodHRwczovL2dpdGh1Yi5jb20vU3dpaXAvZ2VuZXJhdG9yLWd1bHAtYW5ndWxhclwiIHRhcmdldD1cIl9ibGFua1wiPjxiPmdlbmVyYXRvci1ndWxwLWFuZ3VsYXI8L2I+PC9hPidcbiAgICAgIHZtLmNsYXNzQW5pbWF0aW9uID0gJydcbiAgICAgIHJldHVyblxuXG4gICAgZ2V0V2ViRGV2VGVjID0gLT5cbiAgICAgIHZtLmF3ZXNvbWVUaGluZ3MgPSB3ZWJEZXZUZWMuZ2V0VGVjKClcbiAgICAgIGFuZ3VsYXIuZm9yRWFjaCB2bS5hd2Vzb21lVGhpbmdzLCAoYXdlc29tZVRoaW5nKSAtPlxuICAgICAgICBhd2Vzb21lVGhpbmcucmFuayA9IE1hdGgucmFuZG9tKClcbiAgICAgICAgcmV0dXJuXG4gICAgICByZXR1cm5cblxuICAgIHZtLmF3ZXNvbWVUaGluZ3MgPSBbXVxuICAgIHZtLmNsYXNzQW5pbWF0aW9uID0gJydcbiAgICB2bS5jcmVhdGlvbkRhdGUgPSAxNDQ3NzMyMzc3MzgyXG4gICAgdm0uc2hvd1RvYXN0ciA9IHNob3dUb2FzdHJcbiAgICBhY3RpdmF0ZSgpXG4gICAgcmV0dXJuXG4iXX0=
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Dec 05 2015 14:23:36 GMT-0700 (MST)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

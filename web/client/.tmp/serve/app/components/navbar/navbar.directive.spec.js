@@ -1,0 +1,37 @@
+
+/*
+@todo Complete the test
+This example is not perfect.
+Test should check if MomentJS have been called
+ */
+
+(function() {
+  describe('directive navbar', function() {
+    var element, timeInMs, vm;
+    vm = void 0;
+    element = void 0;
+    timeInMs = void 0;
+    beforeEach(module('pounce'));
+    beforeEach(inject(function($compile, $rootScope) {
+      timeInMs = new Date();
+      timeInMs = timeInMs.setHours(timeInMs.getHours() - 24);
+      element = angular.element("<acme-navbar creation-date='" + timeInMs + "'></acme-navbar>");
+      $compile(element)($rootScope.$new());
+      $rootScope.$digest();
+      return vm = element.isolateScope().vm;
+    }));
+    it('should be compiled', function() {
+      return expect(element.html()).not.toEqual(null);
+    });
+    return it('should have isolate scope object with instanciate members', function() {
+      expect(vm).toEqual(jasmine.any(Object));
+      expect(vm.creationDate).toEqual(jasmine.any(Number));
+      expect(vm.creationDate).toEqual(timeInMs);
+      expect(vm.relativeDate).toEqual(jasmine.any(String));
+      return expect(vm.relativeDate).toEqual('a day ago');
+    });
+  });
+
+}).call(this);
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvbXBvbmVudHMvbmF2YmFyL25hdmJhci5kaXJlY3RpdmUuc3BlYy5jb2ZmZWUiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtBQUFBOzs7Ozs7QUFBQTtFQUtBLFFBQUEsQ0FBUyxrQkFBVCxFQUE2QixTQUFBO0FBQzNCLFFBQUE7SUFBQSxFQUFBLEdBQUs7SUFDTCxPQUFBLEdBQVU7SUFDVixRQUFBLEdBQVc7SUFFWCxVQUFBLENBQVcsTUFBQSxDQUFPLFFBQVAsQ0FBWDtJQUVBLFVBQUEsQ0FBVyxNQUFBLENBQU8sU0FBQyxRQUFELEVBQVcsVUFBWDtNQUNoQixRQUFBLEdBQWUsSUFBQSxJQUFBLENBQUE7TUFDZixRQUFBLEdBQVcsUUFBUSxDQUFDLFFBQVQsQ0FBa0IsUUFBUSxDQUFDLFFBQVQsQ0FBQSxDQUFBLEdBQXNCLEVBQXhDO01BRVgsT0FBQSxHQUFVLE9BQU8sQ0FBQyxPQUFSLENBQWdCLDhCQUFBLEdBQStCLFFBQS9CLEdBQXdDLGtCQUF4RDtNQUVWLFFBQUEsQ0FBUyxPQUFULENBQUEsQ0FBa0IsVUFBVSxDQUFDLElBQVgsQ0FBQSxDQUFsQjtNQUNBLFVBQVUsQ0FBQyxPQUFYLENBQUE7YUFDQSxFQUFBLEdBQUssT0FBTyxDQUFDLFlBQVIsQ0FBQSxDQUFzQixDQUFDO0lBUlosQ0FBUCxDQUFYO0lBVUEsRUFBQSxDQUFHLG9CQUFILEVBQXlCLFNBQUE7YUFDdkIsTUFBQSxDQUFPLE9BQU8sQ0FBQyxJQUFSLENBQUEsQ0FBUCxDQUFzQixDQUFDLEdBQUcsQ0FBQyxPQUEzQixDQUFtQyxJQUFuQztJQUR1QixDQUF6QjtXQUdBLEVBQUEsQ0FBRywyREFBSCxFQUFnRSxTQUFBO01BQzlELE1BQUEsQ0FBTyxFQUFQLENBQVUsQ0FBQyxPQUFYLENBQW1CLE9BQU8sQ0FBQyxHQUFSLENBQVksTUFBWixDQUFuQjtNQUVBLE1BQUEsQ0FBTyxFQUFFLENBQUMsWUFBVixDQUF1QixDQUFDLE9BQXhCLENBQWdDLE9BQU8sQ0FBQyxHQUFSLENBQVksTUFBWixDQUFoQztNQUNBLE1BQUEsQ0FBTyxFQUFFLENBQUMsWUFBVixDQUF1QixDQUFDLE9BQXhCLENBQWdDLFFBQWhDO01BRUEsTUFBQSxDQUFPLEVBQUUsQ0FBQyxZQUFWLENBQXVCLENBQUMsT0FBeEIsQ0FBZ0MsT0FBTyxDQUFDLEdBQVIsQ0FBWSxNQUFaLENBQWhDO2FBQ0EsTUFBQSxDQUFPLEVBQUUsQ0FBQyxZQUFWLENBQXVCLENBQUMsT0FBeEIsQ0FBZ0MsV0FBaEM7SUFQOEQsQ0FBaEU7RUFwQjJCLENBQTdCO0FBTEEiLCJmaWxlIjoiY29tcG9uZW50cy9uYXZiYXIvbmF2YmFyLmRpcmVjdGl2ZS5zcGVjLmpzIiwic291cmNlUm9vdCI6Ii9zb3VyY2UvIiwic291cmNlc0NvbnRlbnQiOlsiIyMjXG5AdG9kbyBDb21wbGV0ZSB0aGUgdGVzdFxuVGhpcyBleGFtcGxlIGlzIG5vdCBwZXJmZWN0LlxuVGVzdCBzaG91bGQgY2hlY2sgaWYgTW9tZW50SlMgaGF2ZSBiZWVuIGNhbGxlZFxuIyMjXG5kZXNjcmliZSAnZGlyZWN0aXZlIG5hdmJhcicsICgpIC0+XG4gIHZtID0gdW5kZWZpbmVkXG4gIGVsZW1lbnQgPSB1bmRlZmluZWRcbiAgdGltZUluTXMgPSB1bmRlZmluZWRcblxuICBiZWZvcmVFYWNoIG1vZHVsZSAncG91bmNlJ1xuXG4gIGJlZm9yZUVhY2ggaW5qZWN0ICgkY29tcGlsZSwgJHJvb3RTY29wZSkgLT5cbiAgICB0aW1lSW5NcyA9IG5ldyBEYXRlKClcbiAgICB0aW1lSW5NcyA9IHRpbWVJbk1zLnNldEhvdXJzIHRpbWVJbk1zLmdldEhvdXJzKCkgLSAyNFxuXG4gICAgZWxlbWVudCA9IGFuZ3VsYXIuZWxlbWVudCBcIjxhY21lLW5hdmJhciBjcmVhdGlvbi1kYXRlPScje3RpbWVJbk1zfSc+PC9hY21lLW5hdmJhcj5cIlxuXG4gICAgJGNvbXBpbGUoZWxlbWVudCkgJHJvb3RTY29wZS4kbmV3KClcbiAgICAkcm9vdFNjb3BlLiRkaWdlc3QoKVxuICAgIHZtID0gZWxlbWVudC5pc29sYXRlU2NvcGUoKS52bVxuXG4gIGl0ICdzaG91bGQgYmUgY29tcGlsZWQnLCAoKSAtPlxuICAgIGV4cGVjdChlbGVtZW50Lmh0bWwoKSkubm90LnRvRXF1YWwgbnVsbFxuXG4gIGl0ICdzaG91bGQgaGF2ZSBpc29sYXRlIHNjb3BlIG9iamVjdCB3aXRoIGluc3RhbmNpYXRlIG1lbWJlcnMnLCAoKSAtPlxuICAgIGV4cGVjdCh2bSkudG9FcXVhbCBqYXNtaW5lLmFueSBPYmplY3RcblxuICAgIGV4cGVjdCh2bS5jcmVhdGlvbkRhdGUpLnRvRXF1YWwgamFzbWluZS5hbnkgTnVtYmVyXG4gICAgZXhwZWN0KHZtLmNyZWF0aW9uRGF0ZSkudG9FcXVhbCB0aW1lSW5Nc1xuXG4gICAgZXhwZWN0KHZtLnJlbGF0aXZlRGF0ZSkudG9FcXVhbCBqYXNtaW5lLmFueSBTdHJpbmdcbiAgICBleHBlY3Qodm0ucmVsYXRpdmVEYXRlKS50b0VxdWFsICdhIGRheSBhZ28nXG4iXX0=

@@ -1,0 +1,6 @@
+(function() {
+  angular.module('pounce').constant('malarkey', malarkey).constant('moment', moment);
+
+}).call(this);
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4LmNvbnN0YW50cy5jb2ZmZWUiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFBQSxPQUFPLENBQUMsTUFBUixDQUFlLFFBQWYsQ0FDRSxDQUFDLFFBREgsQ0FDWSxVQURaLEVBQ3dCLFFBRHhCLENBRUUsQ0FBQyxRQUZILENBRVksUUFGWixFQUVzQixNQUZ0QjtBQUFBIiwiZmlsZSI6ImluZGV4LmNvbnN0YW50cy5qcyIsInNvdXJjZVJvb3QiOiIvc291cmNlLyIsInNvdXJjZXNDb250ZW50IjpbImFuZ3VsYXIubW9kdWxlKCdwb3VuY2UnKVxuICAuY29uc3RhbnQgJ21hbGFya2V5JywgbWFsYXJrZXlcbiAgLmNvbnN0YW50ICdtb21lbnQnLCBtb21lbnRcbiJdfQ==
