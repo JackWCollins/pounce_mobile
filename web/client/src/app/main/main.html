@@ -3,34 +3,27 @@
   <md-content>
     <acme-navbar></acme-navbar>
 
-    <div layout="row">
-      <div flex='15' class="client-list">
-        <md-card ui-sref="home.clientDetail({clientId: 1})" class="client">
+    <div layout="row" class="client-content full-height-wrap">
+      <div flex='15' class="client-list scroll-panel">
+        <md-card ui-sref="home.clientDetail({clientId: client.id})" class="client" ng-repeat="client in main.clients" ng-class="{active: main.currentClient.id == $index}">
           <md-card-content>
-            <h3>Stephanie and Steven</h3>
+            <h3>{{client | relationshipName}}</h3>
           </md-card-content>
         </md-card>
 
-        <md-card ui-sref="home.clientDetail({clientId: 2})" class="client">
-          <md-card-content>
-            <h3>Erik and Beth</h3>
-          </md-card-content>
-        </md-card>
-
-        <md-card ui-sref="home.clientDetail({clientId: 3})" class="client">
-          <md-card-content>
-            <h3>Carrie and Andy</h3>
-          </md-card-content>
-        </md-card>
       </div>
 
-      <div flex='85'>
-        <ui-view/>
+      <div flex='55' class='client-detail scroll-panel'>
+        <div ui-view="activities"></div>
+      </div>
+
+      <div flex='30' class='client-detail scroll-panel'>
+        <div ui-view="messages"/></div>
       </div>
 
     </div>
 
-    
   </md-content>
-
 </div>
+
+

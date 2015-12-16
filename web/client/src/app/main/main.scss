@@ -1,0 +1,18 @@
+html, body {
+  height:100%;
+  margin: 0;
+  padding: 0;
+}
+
+.full-height-wrap {
+  height: 100vh;
+  display: flex;
+}
+
+.scroll-panel {
+  overflow: scroll;
+  height: auto;
+  padding: .5rem;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: none;
+}

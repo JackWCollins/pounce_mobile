@@ -3,10 +3,13 @@
     <md-tabs md-dynamic-height md-border-bottom>
       <md-tab>
         <md-tab-label>
-          <span>Info</span>
+          <span>Showings</span>
         </md-tab-label>
         <md-tab-body>
-          <h1 class="md-display-2">Client Info</h1>
+          <h1 class="md-display-2">Showings</h1>
+          <ul>
+            <li ng-repeat="showing in clientCtrl.showingCount">A Showing!</li>
+          </ul>
         </md-tab-body>
       </md-tab>
       <md-tab>
@@ -19,12 +22,13 @@
       </md-tab>
       <md-tab>
         <md-tab-label>
-          <span>Showings</span>
+          <span>Info</span>
         </md-tab-label>
         <md-tab-body>
-          <h1 class="md-display-2">Showings</h1>
+          <h1 class="md-display-2">Client Info</h1>
         </md-tab-body>
       </md-tab>
+
     </md-tabs>
 
 
@@ -51,6 +55,8 @@
           <div flex='20' ng-if="message.type == 'showing'"><md-icon>home</md-icon></div>
           <div flex='20' ng-if="message.type == 'priority'"><md-icon>swap_vert</md-icon></div>
           <div flex='20' ng-if="message.type == 'info'"><md-icon>info_outline</md-icon></div>
+          <div flex='20' ng-if="message.type == 'feedback'"><md-icon>rate_review</md-icon></div>
+          <div flex='20' ng-if="message.type == 'personAdd'"><md-icon>person_add</md-icon></div>
           <div flex='80'>{{message.body}}</div>
         </md-list-item>
 

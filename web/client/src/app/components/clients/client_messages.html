@@ -1,0 +1,32 @@
+<div>
+	<md-button flex class="md-icon-button md-mini" aria-label="Search">
+    <md-icon class='action'>search</md-icon>
+  </md-button>
+	<md-input-container class="md-icon-float">
+    <!-- Use floating label instead of placeholder -->
+    <label>Search</label>
+    <input ng-model="user.name" type="text">
+  </md-input-container>
+</div>
+
+<md-card>
+  <md-list class='notification-panel'>
+
+    <md-list-item class='notification md-3-line' ng-repeat-start="message in clientCtrl.messages | orderBy:'time'">
+      <div flex='50'>{{message.title}}</div>
+      <div flex='50' class="message-time">{{message.time | date:'shortTime'}}</div>
+      <div flex='20' ng-if="message.type == 'message'"><md-icon>chat_bubble_outline</md-icon></div>
+      <div flex='20' ng-if="message.type == 'showing'"><md-icon>home</md-icon></div>
+      <div flex='20' ng-if="message.type == 'priority'"><md-icon>swap_vert</md-icon></div>
+      <div flex='20' ng-if="message.type == 'info'"><md-icon>info_outline</md-icon></div>
+      <div flex='20' ng-if="message.type == 'feedback'"><md-icon>rate_review</md-icon></div>
+      <div flex='20' ng-if="message.type == 'personAdd'"><md-icon>person_add</md-icon></div>
+      <div flex='80'>{{message.body}}</div>
+    </md-list-item>
+
+    <md-divider ng-repeat-end></md-divider>
+		<md-input-container md-no-float class="md-block">
+		  <input type="textarea" placeholder="New Message">
+		</md-input-container>
+  </md-list>
+</md-card>
