@@ -1,0 +1,7 @@
+{
+    "name": "PouncePro",
+    "description": "Web hosted version of the PouncePro mobile app",
+    "repository": "https://github.com/JackWCollins/pounce_mobile_web_host.git",
+    "logo": "http://www/image/pounce-balanced.png",
+    "keywords": ["pounce", "PouncePro"]
+}
