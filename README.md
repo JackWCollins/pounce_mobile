@@ -1,30 +1,14 @@
-CoffeeScript Ionic Starter
+PouncePro Mobile App Hosted on Heroku
 ===
 
-Starting point for developing Ionic apps with CoffeeScript.
-based on https://github.com/StephenGrider/CoffeeScript-Ionic-Starter
-Uses Ionic 1.10
+This repo is to host the mobile app on Heroku for demo purposes. It is live at pouncepro-mobile.herokuapp.com
 
+I used two articles to help get this up and running:
 
-Getting Started
----
+http://jasonkarns.com/blog/subdirectory-checkouts-with-git-sparse-checkout/
 
-Enjoy coffeescript + sass w/ live reloading.
+I used the sparse checkout in the above link to create a separate repo of only the mobile version of PouncePro. That allowed me to create a standalone Heroku deployment for demos. 
 
-```
-npm install
-gulp watch
-```
-In a separate window,
-```
-ionic serve
-```
+http://devdactic.com/deploying-ionic-to-heroku/
 
-Coffeescript files in www/coffee will be compiled to JS and concated into www/js/application.js.  Sass files in www/sass will be compiled to CSS and concated into www/css/style.css.
-
-Changes to any files in the project directory will trigger a reload in your browser, complete with your newly concated+compiled sass+coffee files!
-
-Troubleshooting
----
-
-If you get an error on running `gulp watch`, try `npm install -g gulp-cli`.
+This link was for setting up an Express server to host the javascript files. 
