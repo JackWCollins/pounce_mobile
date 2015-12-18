@@ -1,13 +1,18 @@
-<md-toolbar layout="row" layout-align="center center">
+<md-toolbar class='global-navbar' layout="row" layout-align="left center">
 
-  <md-button href="https://github.com/Swiip/generator-gulp-angular">PouncePro</md-button>
+	<section flex='75' layout-align="left">
+  	<md-button href="/#/">PouncePro</md-button>
+	</section>
 
-  <section flex layout="row" layout-align="left center">
-    <md-button href="#" class="md-raised">Home</md-button>
-    <md-button href="#" class="md-raised">About</md-button>
-    <md-button href="#" class="md-raised">Contact</md-button>
+  <section class='user-actions' flex='25' layout-align="right">
+  	<md-button class="md-fab md-mini md-accent" aria-label="Add Client">
+      <md-icon class='action'>person_add</md-icon>
+    </md-button>
+  	<md-button class="md-icon-button" aria-label="All Messages">
+      <md-icon class='action'>chat_bubble_outline</md-icon>
+    </md-button>
+	  <span>|</span>
+		<md-button class="acme-navbar-text">Adam Agent</md-button>
   </section>
-
-  <md-button class="acme-navbar-text">Application was created {{ vm.relativeDate }}.</md-button>
 
 </md-toolbar>

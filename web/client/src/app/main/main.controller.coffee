@@ -1,7 +1,10 @@
 angular.module 'pounce'
-  .controller 'MainController', ($timeout, webDevTec, toastr) ->
+  .controller 'MainController', ($timeout, webDevTec, toastr, relationshipService, $stateParams) ->
     'ngInject'
     vm = this
+
+    console.log "In main controller with stateParams: ", $stateParams
+
     activate = ->
       getWebDevTec()
       $timeout (->
@@ -22,9 +25,15 @@ angular.module 'pounce'
         return
       return
 
+    getClients = ->
+      vm.clients = relationshipService.all()
+
     vm.awesomeThings = []
     vm.classAnimation = ''
     vm.creationDate = 1447732377382
     vm.showToastr = showToastr
+    getClients()
+    vm.currentClient = {id: $stateParams.clientId} # This doesn't work - I can't get the clientId from parent state
+    console.log "Current client: ", vm.currentClient
     activate()
     return
